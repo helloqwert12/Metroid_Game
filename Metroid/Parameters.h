@@ -13,6 +13,7 @@ class QNode;
 class Loader;
 class Brick;
 class Bedgehog;
+class Block;
 
 //================ SCREEN RESOLUTION ================
 #define GAME_SCREEN_RESOLUTION_640_480_24   0
@@ -113,7 +114,7 @@ class Bedgehog;
 
 #define JUMP_VELOCITY_BOOST 0.08f
 #define JUMP_VELOCITY_BOOST_FIRST 0.9f
-#define FALLDOWN_VELOCITY_DECREASE 0.15f
+#define FALLDOWN_VELOCITY_DECREASE 0.09f
 //================== END SAMUS ====================
 
 //================== ENEMY =====================

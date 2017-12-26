@@ -3,6 +3,7 @@
 #include "Brick.h"
 #include "Camera.h"
 #include "Bedgehog.h"
+#include "Block.h"
 #include "BulletManager.h"
 
 World::World()

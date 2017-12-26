@@ -6,6 +6,7 @@
 #include "Samus.h"
 #include "Parameters.h"
 #include "Bedgehog.h"
+#include "Block.h"
 /*
 	Class này chứa tất cả những thứ trong Game
 	Các class khác chứa con trỏ đến class này để thao tác với các đối tượng trong class này
@@ -25,6 +26,8 @@ public:
 	GroupObject * quadtreeGroup;
 
 	Bedgehog * hog;
+
+	Block * block;
 
 	BulletManager * bullets;
 
