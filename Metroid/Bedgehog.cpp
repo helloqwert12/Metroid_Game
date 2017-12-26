@@ -30,10 +30,6 @@ Bedgehog::~Bedgehog()
 	delete(right_pink);
 }
 
-ENEMY_TYPE Bedgehog::GetEnemyType()
-{
-	return enemy_type;
-}
 
 void Bedgehog::InitSprites()
 {

@@ -14,7 +14,6 @@ enum BLOCK_STATE
 class Block : public Enemy
 {
 protected:
-	ENEMY_TYPE enemy_type;
 	BLOCK_STATE state;
 	Sprite * left;
 	Sprite * right;
@@ -24,7 +23,6 @@ public:
 	Block(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type);
 	~Block();
 
-	ENEMY_TYPE GetEnemyType();
 	void InitSprites();
 	//============== OVERRIDE VIRTUAL METHOD ===================
 	virtual void Update(int t);
