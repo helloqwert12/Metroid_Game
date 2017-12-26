@@ -141,16 +141,7 @@ class Block;
 
 //================== BIRD  =====================
 
-//--IDLE
-#define BIRD_WIDTH 32
-#define BIRD_HEIGHT 52
-
-#define BIRD_IDLE_SPRITE_COUNT 1
-
-#define BIRD_IDLE "sprites\\enemy\\BIRD_IDLE.txt"
-
-//--FLY
-#define BIRD_WIDTH 32
+#define BIRD_WIDTH 36
 #define BIRD_HEIGHT 52
 
 #define BIRD_FLY_SPRITE_COUNT 3

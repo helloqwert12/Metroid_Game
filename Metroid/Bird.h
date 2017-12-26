@@ -7,7 +7,6 @@
 
 enum BIRD_STATE
 {
-	ON_BIRD_IDLE,
 	ON_BIRD_FLY
 };
 
@@ -15,7 +14,7 @@ class Bird : public Enemy
 {
 protected:
 	BIRD_STATE state;
-	Sprite * idle;
+
 	Sprite * fly;
 
 public:
