@@ -1,10 +1,11 @@
-#include "Bullet.h"
-
+﻿#include "Bullet.h"
+#include "World.h"
+#include "GroupObject.h"
 
 
 void Bullet::Render()
 {
-	if (isRendering)
+	if (isActive)
 	{
 		_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 		bullet->Render(pos_x, pos_y);
@@ -12,17 +13,23 @@ void Bullet::Render()
 	}
 }
 
-Bullet::Bullet()
+Bullet::Bullet(World * manager)
 {
 	bullet = NULL;
 	limit_dist_x = 0;
 	limit_dist_y = 0;
-	isRendering = false;
+	isActive = false;
+	this->manager = manager;
 }
 
-Bullet::Bullet(int x_holder, int y_holder)
+Bullet::Bullet(World * manager, int x_holder, int y_holder)
 {
-	Bullet();
+	bullet = NULL;
+	limit_dist_x = 0;
+	limit_dist_y = 0;
+	isActive = false;
+	this->manager = manager;
+	
 	pos_x_holder = x_holder;
 	pos_y_holder = y_holder;
 }
@@ -42,6 +49,9 @@ void Bullet::InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 
 	//Create sprite
 	bullet = new Sprite(_SpriteHandler, BULLET_SPRITE_PATH, BULLET_SPRITE, BULLET_WIDTH, BULLET_HEIGHT, BULLET_COUNT, SPRITE_PER_ROW);
+
+	//Set collider
+	collider = new Collider(0, 0, -BULLET_HEIGHT, BULLET_WIDTH);
 }
 
 void Bullet::InitPosition(int posX, int posY)
@@ -68,28 +78,43 @@ void Bullet::SetDirection(BULLET_DIRECTION value)
 
 void Bullet::Update(int t, int posX, int posY)
 {
+	// Xử lý va chạm
+	for (int i = 0; i < manager->quadtreeGroup->size; i++)
+	{
+		switch (manager->quadtreeGroup->objects[i]->GetType())
+		{
+		case BRICK:
+			float timeScale = SweptAABB(manager->quadtreeGroup->objects[i], t);
+			if (timeScale < 1.0f)
+			{
+				Reset();
+			}
+			break;
+		}
+	}
+
 	//
 	// Update bullet status
 	//
 	switch (direction)
 	{
 	case ON_LEFT:
-		isRendering = true;
+		isActive = true;
 		vx = -SPEED;
 		vy = 0;
 		break;
 	case ON_RIGHT:
-		isRendering = true;
+		isActive = true;
 		vx = SPEED;
 		vy = 0;
 		break;
 	case ON_UP:
-		isRendering = true;
+		isActive = true;
 		vy = SPEED;
 		vx = 0;
 		break;
 	case NONE:
-		isRendering = false;
+		isActive = false;
 		vx = 0;
 		vy = 0;
 		break;
@@ -130,7 +155,7 @@ void Bullet::ResetPosition()
 void Bullet::Reset()
 {
 	//Ngung render
-	isRendering = false;
+	isActive = false;
 
 	//Reset vi tri
 	ResetPosition();

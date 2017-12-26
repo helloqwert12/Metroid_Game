@@ -12,6 +12,7 @@ private:
 	GameObject * owner;
 public:
 	Collider();
+	Collider(float top, float left, float bottom, float right);
 	~Collider();
 
 	//=============== GET - SET METHOD ========================

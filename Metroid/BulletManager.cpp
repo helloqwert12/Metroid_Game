@@ -7,7 +7,7 @@ BulletManager::BulletManager()
 	bullet_list = new Bullet*[BULLET_COUNT];
 	for (int i = 0; i < BULLET_COUNT; i++)
 	{
-		bullet_list[i] = new Bullet();
+		bullet_list[i] = new Bullet(manager);
 	}
 	_Index = 0;
 	this->start_shoot = 0;
@@ -21,7 +21,7 @@ BulletManager::BulletManager(World * manager)
 	bullet_list = new Bullet*[BULLET_COUNT];
 	for (int i = 0; i < BULLET_COUNT; i++)
 	{
-		bullet_list[i] = new Bullet();
+		bullet_list[i] = new Bullet(manager);
 	}
 	_Index = 0;
 	this->start_shoot = 0;

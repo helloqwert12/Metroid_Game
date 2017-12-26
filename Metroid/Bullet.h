@@ -27,6 +27,7 @@ private:
 	int limit_dist_x;		//limit distance of x
 	int limit_dist_y;		//limit distance of y;
 
+	World * manager;
 	
 
 	LPD3DXSPRITE _SpriteHandler;
@@ -37,8 +38,8 @@ private:
 public:
 	bool isRendering;		//determine if the bullet is in rendering (in case out of distance_limit -> not render)
 
-	Bullet();
-	Bullet(int x_holder, int y_holder);
+	Bullet(World * manager);
+	Bullet(World * manager, int x_holder, int y_holder);
 	~Bullet();
 
 	void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
