@@ -20,7 +20,6 @@ Bird::Bird(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type) :
 
 Bird::~Bird()
 {
-	delete(idle);
 	delete(fly);
 }
 
@@ -31,17 +30,15 @@ ENEMY_TYPE Bird::GetEnemyType()
 
 void Bird::InitSprites()
 {
-	char  *idle_path = NULL, *fly_path = NULL;
+	char  *fly_path = NULL;
 	switch (enemy_type)
 	{
 	case BIRD:
-		idle_path = BIRD_IDLE;
 		fly_path = BIRD_FLY;
 		break;
 	}
 
 	// Khởi tạo sprite
-	idle = new Sprite(spriteHandler, ENEMY_SPRITE_PATH, idle_path, BIRD_WIDTH, BIRD_HEIGHT, BIRD_IDLE_SPRITE_COUNT, 1);
 	fly = new Sprite(spriteHandler, ENEMY_SPRITE_PATH, fly_path, BIRD_WIDTH, BIRD_HEIGHT, BIRD_FLY_SPRITE_COUNT, 1);
 }
 
@@ -64,9 +61,6 @@ void Bird::Update(int t)
 	{
 		switch (state)
 		{
-		case ON_BIRD_IDLE:
-			idle->Next();
-			break;
 		case ON_BIRD_FLY:
 			fly->Next();
 			break;
@@ -88,9 +82,6 @@ void Bird::Render()
 	spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 	switch (state)
 	{
-	case ON_BIRD_IDLE:
-		idle->Render(pos_x, pos_y);
-		break;
 	case ON_BIRD_FLY:
 		fly->Render(pos_x, pos_y);
 		break;
