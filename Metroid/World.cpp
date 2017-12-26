@@ -29,8 +29,8 @@ World::World(LPD3DXSPRITE spriteHandler, Metroid * metroid)
 
 	enemyGroup = new GroupObject(this);
 
-	hog = new Bedgehog(spriteHandler, this, BEDGEHOG_YELLOW);
-	enemyGroup->AddGameObject(hog);
+	//hog = new Bedgehog(spriteHandler, this, BEDGEHOG_YELLOW);
+	//enemyGroup->AddGameObject(hog);
 }
 
 
@@ -54,7 +54,7 @@ void World::Update(float t)
 
 	collisionGroup->Update(t);
 
-	hog->Update(t);
+	//hog->Update(t);
 	
 }
 
@@ -64,6 +64,6 @@ void World::Render()
 	//zoomer->Render();
 	bullets->Render();
 	quadtreeGroup->Render();
-	hog->Render();
+	//hog->Render();
 	collisionGroup->Render();
 }

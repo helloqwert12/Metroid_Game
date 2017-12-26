@@ -33,7 +33,7 @@ private:
 	int limit_dist_x;		//limit distance of x
 	int limit_dist_y;		//limit distance of y;
 
-
+	World * manager;
 
 	LPD3DXSPRITE _SpriteHandler;
 	BULLET_DIRECTION direction;
@@ -42,22 +42,15 @@ private:
 	Sprite * missile_right;
 
 public:
-	bool isRendering;		//determine if the bullet is in rendering (in case out of distance_limit -> not render)
-
-	Missile();
-	Missile(int x_holder, int y_holder);
+	
+	Missile(World * manager);
+	Missile(World * manager, int x_holder, int y_holder);
 	~Missile();
 
 	void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
-	void InitPosition(int posX, int posY);
-
-	BULLET_DIRECTION GetDirection();
-	void SetDirection(BULLET_DIRECTION value);
-	void Update(int t, int posX, int posY);
+	
 	void Render();
-	void ResetPosition();
-	void Reset();
-	void Release();		//destroy the missile
+
 	void Shoot(BULLET_DIRECTION dir);
 };
 

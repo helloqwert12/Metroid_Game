@@ -20,7 +20,7 @@ void Metroid::_InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 void Metroid::_InitPositions()
 {
 	world->samus->InitPostition();
-	world->hog->InitPostition(1600, 90);
+	//world->hog->InitPostition(1600, 90);
 	//bulletManager->InitPosition(world->samus->GetPosX(), world->samus->GetPosY());
 }
 

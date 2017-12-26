@@ -1,6 +1,7 @@
 #include "BulletManager.h"
 #include "World.h"
 #include "Metroid.h"
+#include "Bullet.h"
 BulletManager::BulletManager()
 {
 	//Create instance bullet_list

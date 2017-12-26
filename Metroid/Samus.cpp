@@ -292,11 +292,13 @@ void Samus::Update(int t)
 	//
 	//GameObject::Update(t);
 
-	std::vector<GameObject*> list = manager->enemyGroup->GetListGO();
+	vy -= gravity;
+
+	/*std::vector<GameObject*> list = manager->enemyGroup->GetListGO();
 	for (int i = 0; i < list.size(); i++)
 	{
 		this->Response(list[i], t);
-	}
+	}*/
 	
 	for (int i = 0; i < manager->quadtreeGroup->size; i++)
 	{
@@ -314,6 +316,7 @@ void Samus::Update(int t)
 		//this->Response(list2[i], t);
 
 	}
+	
 	pos_x += vx*t;
 	pos_y += vy*t;
 
@@ -420,7 +423,7 @@ void Samus::Update(int t)
 	}
 
 	//Check if samus is on ground or not
-	if (pos_y > GROUND_Y)
+	/*if (pos_y > GROUND_Y)
 	{
 		vy -= gravity;
 	}
@@ -436,7 +439,7 @@ void Samus::Update(int t)
 		{
 			state = IDLE_RIGHT;
 		}
-	}
+	}*/
 
 	//Render
 	Render();
@@ -474,3 +477,51 @@ void Samus::Response(GameObject *target, const float &DeltaTime)
 		lastPosY = this->GetPosY();
 	}
 }
+
+// Phản xạ khi va chạm với ground
+void Samus::SlideFromGround(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale)
+{
+	//ResponseFrom(target, _DeltaTime, collisionTimeScale);
+	// lỡ đụng 2,3 ground mà chạy cái này nhiều lần sẽ rất sai
+	// "góc lag" sẽ làm đi luôn vào trong tường
+
+
+	if (normalx > 0.1f)	// tông bên phải gạch
+	{
+		this->pos_x = (target->GetPosX() + target->GetCollider()->GetRight() - this->collider->GetLeft()) + 0.1f;
+		pos_x -= vx*DeltaTime;
+		//vx = 0.0f;
+	}
+
+	else if (normalx < -0.1f)// tông bên trái gạch
+	{
+		this->pos_x = (target->GetPosX() + target->GetCollider()->GetLeft() - this->collider->GetRight()) - 0.1f;
+		pos_x -= vx*DeltaTime;
+		//vx = 0.0f;
+	}
+
+	if (normaly > 0.1f) // trên xuống (không vào normaly được)
+	{
+		this->pos_y = (target->GetPosY() + target->GetCollider()->GetTop() - this->collider->GetBottom()) + 0.1f;
+		//pos_y -= vy*DeltaTime;
+		vy = 0;
+
+		// Xử lý trạng thái cho samus
+		if (state == ON_JUMP_LEFT || state == ON_JUMPING_SHOOTING_LEFT || state == ON_SOMERSAULT_LEFT || state == ON_JUMP_AIM_UP_LEFT)
+		{
+			state = IDLE_LEFT;
+		}
+		else if (state == ON_JUMP_RIGHT || state == ON_JUMPING_SHOOTING_RIGHT || state == ON_SOMERSAULT_RIGHT || state == ON_JUMP_AIM_UP_RIGHT)
+		{
+			state = IDLE_RIGHT;
+		}
+
+	}
+	else if (normaly < -0.1f)	// tông ở dưới lên
+	{
+		//this->pos_y = (target->pos_y + target->collider->GetTop() - this->collider->GetBottom()) - 0.1f;
+		pos_y -= vy*DeltaTime;
+		vy = 0;
+	}
+	return;
+}//----------------------------------

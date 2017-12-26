@@ -121,7 +121,7 @@ public:
 	void Deflect(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
 	//void Push(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
 	//void Slide(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
-	void SlideFromGround(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
+	virtual void SlideFromGround(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
 	// ============================== END COLLISTION METHOD ==========================
 };
 #endif // !_GAME_OBJECT_
