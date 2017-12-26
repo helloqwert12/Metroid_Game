@@ -24,11 +24,6 @@ Block::~Block()
 	delete(right);
 }
 
-ENEMY_TYPE Block::GetEnemyType()
-{
-	return enemy_type;
-}
-
 void Block::InitSprites()
 {
 

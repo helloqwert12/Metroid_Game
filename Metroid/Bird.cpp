@@ -23,11 +23,6 @@ Bird::~Bird()
 	delete(fly);
 }
 
-ENEMY_TYPE Bird::GetEnemyType()
-{
-	return enemy_type;
-}
-
 void Bird::InitSprites()
 {
 	char  *fly_path = NULL;
@@ -40,6 +35,8 @@ void Bird::InitSprites()
 
 	// Khởi tạo sprite
 	fly = new Sprite(spriteHandler, ENEMY_SPRITE_PATH, fly_path, BIRD_WIDTH, BIRD_HEIGHT, BIRD_FLY_SPRITE_COUNT, 1);
+
+	state = ON_BIRD_FLY;
 }
 
 void Bird::Update(int t)

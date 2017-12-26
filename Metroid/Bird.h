@@ -13,7 +13,6 @@ enum BIRD_STATE
 class Bird : public Enemy
 {
 protected:
-	ENEMY_TYPE enemy_type;
 	BIRD_STATE state;
 
 	Sprite * fly;
@@ -23,7 +22,6 @@ public:
 	Bird(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type);
 	~Bird();
 
-	ENEMY_TYPE GetEnemyType();
 	void InitSprites();
 	//============== OVERRIDE VIRTUAL METHOD ===================
 	virtual void Update(int t);

@@ -20,7 +20,6 @@ enum BEDGEHOG_STATE
 class Bedgehog: public Enemy
 {
 protected:
-	ENEMY_TYPE enemy_type;
 	BEDGEHOG_STATE state;
 	Sprite * up;
 	Sprite * bottom;
@@ -36,7 +35,6 @@ public:
 	Bedgehog(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type);
 	~Bedgehog();
 
-	ENEMY_TYPE GetEnemyType();
 	void InitSprites();
 	//============== OVERRIDE VIRTUAL METHOD ===================
 	virtual void Update(int t);
