@@ -501,7 +501,7 @@ void GameObject::Deflect(GameObject *target, const float &DeltaTime, const float
 	if (normaly > 0.1f) // tông phía trên
 	{
 		if (vy < -0.0f)// đang rơi xuống => văng lên trên
-			vy *= -1;
+			vy = 0.0f;
 	}
 	else if (normaly < -0.1f) // tông phía dưới
 	{
@@ -509,8 +509,11 @@ void GameObject::Deflect(GameObject *target, const float &DeltaTime, const float
 			vy *= -1;
 	}
 
-	pos_x += vx * (1.0f - CollisionTimeScale) * DeltaTime;
-	pos_y += vy * (1.0f - CollisionTimeScale) * DeltaTime;
+	if (normaly != 0 )
+	{
+		pos_x += vx * (CollisionTimeScale)* DeltaTime;
+		pos_y += vy * (CollisionTimeScale)* DeltaTime;
+	}
 }
 
 // Phản xạ khi va chạm với ground
