@@ -2,8 +2,6 @@
 #include "GroupObject.h"
 #include "Brick.h"
 #include "Camera.h"
-#include "Bedgehog.h"
-#include "Block.h"
 #include "BulletManager.h"
 
 World::World()
@@ -30,10 +28,13 @@ World::World(LPD3DXSPRITE spriteHandler, Metroid * metroid)
 
 	enemyGroup = new GroupObject(this);
 
-	hog = new Bedgehog(spriteHandler, this, BEDGEHOG_YELLOW);
-
+	hog_yellow = new Bedgehog(spriteHandler, this, BEDGEHOG_YELLOW);
+	hog_pink = new Bedgehog(spriteHandler, this, BEDGEHOG_PINK);
+	bird = new Bird(spriteHandler, this, BIRD);
 	block = new Block(spriteHandler, this, BLOCK);
-	enemyGroup->AddGameObject(hog);
+	enemyGroup->AddGameObject(hog_yellow);
+	enemyGroup->AddGameObject(hog_pink);
+	enemyGroup->AddGameObject(bird);
 	enemyGroup->AddGameObject(block);
 }
 
@@ -58,9 +59,10 @@ void World::Update(float t)
 
 	collisionGroup->Update(t);
 
-	hog->Update(t);
+	hog_yellow->Update(t);
+	hog_pink->Update(t);
 	block->Update(t);
-	
+	bird->Update(t);
 }
 
 void World::Render()
@@ -69,7 +71,9 @@ void World::Render()
 	//zoomer->Render();
 	bullets->Render();
 	quadtreeGroup->Render();
-	hog->Render();
+	hog_yellow->Render();
+	hog_pink->Render();
 	block->Render();
+	bird->Render();
 	collisionGroup->Render();
 }

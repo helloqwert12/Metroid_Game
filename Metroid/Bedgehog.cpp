@@ -24,6 +24,10 @@ Bedgehog::~Bedgehog()
 	delete(bottom);
 	delete(left);
 	delete(right);
+	delete(up_pink);
+	delete(bottom_pink);
+	delete(left_pink);
+	delete(right_pink);
 }
 
 ENEMY_TYPE Bedgehog::GetEnemyType()
@@ -35,6 +39,7 @@ void Bedgehog::InitSprites()
 {
 
 	char *up_path = NULL, *bottom_path = NULL, *left_path = NULL, *right_path = NULL;
+	
 	switch(enemy_type)
 	{
 	case BEDGEHOG_YELLOW:
@@ -43,13 +48,20 @@ void Bedgehog::InitSprites()
 		left_path = BEDGEHOG_YELLOW_LEFT;
 		right_path = BEDGEHOG_YELLOW_RIGHT;
 		break;
+	case BEDGEHOG_PINK:
+		up_path = BEDGEHOG_PINK_UP;
+		bottom_path = BEDGEHOG_PINK_BOTTOM;
+		left_path = BEDGEHOG_PINK_LEFT;
+		right_path = BEDGEHOG_PINK_RIGHT;
+		break;
 	}
 
-	// Khởi tạo sprite
+	//// Khởi tạo sprite
 	up = new Sprite(spriteHandler, ENEMY_SPRITE_PATH, up_path, BEDGEHOG_WIDTH, BEDGEHOG_HEIGHT, BEDGEHOG_SPRITE_COUNT, 1);
 	bottom = new Sprite(spriteHandler, ENEMY_SPRITE_PATH, bottom_path, BEDGEHOG_WIDTH, BEDGEHOG_HEIGHT, BEDGEHOG_SPRITE_COUNT, 1);
 	left = new Sprite(spriteHandler, ENEMY_SPRITE_PATH, left_path, BEDGEHOG_WIDTH, BEDGEHOG_HEIGHT, BEDGEHOG_SPRITE_COUNT, 1);
 	right = new Sprite(spriteHandler, ENEMY_SPRITE_PATH, right_path, BEDGEHOG_WIDTH, BEDGEHOG_HEIGHT, BEDGEHOG_SPRITE_COUNT, 1);
+
 }
 
 void Bedgehog::Update(int t)
@@ -69,7 +81,7 @@ void Bedgehog::Update(int t)
 	DWORD now = GetTickCount();
 	if (now - last_time > 1000 / ANIMATE_RATE)
 	{
-		switch(state)
+		switch (state)
 		{
 		case ON_BEDGEHOG_UP:
 			up->Next();
@@ -82,6 +94,18 @@ void Bedgehog::Update(int t)
 			break;
 		case ON_BEDGEHOG_RIGHT:
 			right->Next();
+			break;
+		case ON_BEDGEHOG_PINK_UP:
+			up_pink->Next();
+			break;
+		case ON_BEDGEHOG_PINK_BOTTOM:
+			bottom_pink->Next();
+			break;
+		case ON_BEDGEHOG_PINK_LEFT:
+			left_pink->Next();
+			break;
+		case ON_BEDGEHOG_PINK_RIGHT:
+			right_pink->Next();
 			break;
 		}
 		last_time = now;
@@ -112,6 +136,18 @@ void Bedgehog::Render()
 		break;
 	case ON_BEDGEHOG_RIGHT:
 		right->Render(pos_x, pos_y);
+		break;
+	case ON_BEDGEHOG_PINK_UP:
+		up_pink->Render(pos_x, pos_y);
+		break;
+	case ON_BEDGEHOG_PINK_BOTTOM:
+		bottom_pink->Render(pos_x, pos_y);
+		break;
+	case ON_BEDGEHOG_PINK_LEFT:
+		left_pink->Render(pos_x, pos_y);
+		break;
+	case ON_BEDGEHOG_PINK_RIGHT:
+		right_pink->Render(pos_x, pos_y);
 		break;
 	}
 	spriteHandler->End();

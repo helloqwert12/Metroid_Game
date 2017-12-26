@@ -112,8 +112,8 @@ class Block;
 
 #define ANIMATE_RATE 15
 
-#define JUMP_VELOCITY_BOOST 0.08f
-#define JUMP_VELOCITY_BOOST_FIRST 0.9f
+#define JUMP_VELOCITY_BOOST 0.05f
+#define JUMP_VELOCITY_BOOST_FIRST 0.6f
 #define FALLDOWN_VELOCITY_DECREASE 0.09f
 //================== END SAMUS ====================
 
@@ -121,8 +121,8 @@ class Block;
 //================== BEDGEHOG =====================
 #define ENEMY_SPRITE_PATH L"sprites\\enemy\\metroid_enemies_sheet.png"
 
-#define BEDGEHOG_WIDTH 32
-#define BEDGEHOG_HEIGHT 25
+#define BEDGEHOG_WIDTH 36
+#define BEDGEHOG_HEIGHT 32
 
 #define BEDGEHOG_SPRITE_COUNT 2
 

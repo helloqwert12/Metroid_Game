@@ -7,6 +7,7 @@
 #include "Parameters.h"
 #include "Bedgehog.h"
 #include "Block.h"
+#include "Bird.h"
 /*
 	Class này chứa tất cả những thứ trong Game
 	Các class khác chứa con trỏ đến class này để thao tác với các đối tượng trong class này
@@ -25,8 +26,9 @@ public:
 	QNode * rootQNode;
 	GroupObject * quadtreeGroup;
 
-	Bedgehog * hog;
-
+	Bedgehog * hog_yellow;
+	Bedgehog * hog_pink;
+	Bird * bird;
 	Block * block;
 
 	BulletManager * bullets;
