@@ -351,67 +351,51 @@ void Samus::Update(int t)
 			morph_ball_right->Next();
 			break;
 		case ON_RUN_SHOOTING_LEFT:
-			Game::gameSound->playSound(SHOOT);
 			run_shooting_left->Next();
 			break;
 		case ON_RUN_SHOOTING_RIGHT:
-			Game::gameSound->playSound(SHOOT);
 			run_shooting_right->Next();
 			break;
 		case ON_JUMP_LEFT:
-			Game::gameSound->playSound(JUMP);
 			jump_left->Next();
 			break;
 		case ON_JUMP_RIGHT:
-			Game::gameSound->playSound(JUMP);
 			jump_right->Next();
 			break;
 		case ON_SOMERSAULT_LEFT:
-			Game::gameSound->playSound(JUMP);
 			somersault_left->Next();
 			break;
 		case ON_SOMERSAULT_RIGHT:
-			Game::gameSound->playSound(JUMP);
 			somersault_right->Next();
 			break;
 		case ON_JUMPING_SHOOTING_LEFT:
-			Game::gameSound->playSound(SHOOT);
 			jumping_shooting_left->Next();	
 			break;
 		case ON_JUMPING_SHOOTING_RIGHT:
-			Game::gameSound->playSound(SHOOT);
 			jumping_shooting_right->Next();
 			break;
 		case ON_JUMP_AIM_UP_LEFT:
-			Game::gameSound->playSound(JUMP);
 			jump_aim_up_left->Next();
 			break;
 		case ON_JUMP_AIM_UP_RIGHT:
-			Game::gameSound->playSound(JUMP);
 			jump_aim_up_right->Next();
 			break;
 		case IDLING_SHOOTING_LEFT:
-			Game::gameSound->playSound(SHOOT);
 			idle_shooting_left->Next();
 			break;
 		case IDLING_SHOOTING_RIGHT:
-			Game::gameSound->playSound(SHOOT);
 			idle_shooting_right->Next();
 			break;
 		case IDLING_SHOOTING_UP_LEFT:
-			Game::gameSound->playSound(SHOOT);
 			idle_shooting_up_left->Next();
 			break;
 		case IDLING_SHOOTING_UP_RIGHT:
-			Game::gameSound->playSound(SHOOT);
 			idle_shooting_up_right->Next();
 			break;
 		case ON_JUMP_SHOOTING_UP_LEFT:
-			Game::gameSound->playSound(JUMP);
 			jump_shooting_up_left->Next();
 			break;
 		case ON_JUMP_SHOOTING_UP_RIGHT:
-			Game::gameSound->playSound(JUMP);
 			jump_shooting_up_right->Next();
 			break;
 
@@ -432,7 +416,7 @@ void Samus::Update(int t)
 		{
 			state = IDLE_LEFT;
 		}
-		else if (state == ON_JUMP_RIGHT || state ==ON_JUMPING_SHOOTING_RIGHT || state == ON_SOMERSAULT_RIGHT || state == ON_JUMP_AIM_UP_RIGHT)
+		else if (state == ON_JUMP_RIGHT || state == ON_JUMPING_SHOOTING_RIGHT || state == ON_SOMERSAULT_RIGHT || state == ON_JUMP_AIM_UP_RIGHT)
 		{
 			state = IDLE_RIGHT;
 		}

@@ -3,7 +3,7 @@
 
 void Missile::Render()
 {
-	if (isRendering)
+	if (isActive)
 	{
 		_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 		missile_up->Render(pos_x, pos_y);
@@ -13,23 +13,32 @@ void Missile::Render()
 	}
 }
 
-Missile::Missile()
+Missile::Missile(World * manager)
 {
 	missile_up = NULL;
 	missile_left = NULL;
 	missile_right = NULL;
+
 	limit_dist_x = 0;
 	limit_dist_y = 0;
-	isRendering = false;
+	isActive = false;
+	this->manager = manager;
 }
 
-Missile::Missile(int x_holder, int y_holder)
+Missile::Missile(World * manager, int x_holder, int y_holder)
 {
-	Missile();
+	missile_up = NULL;
+	missile_left = NULL;
+	missile_right = NULL;
+
+	limit_dist_x = 0;
+	limit_dist_y = 0;
+	isActive = false;
+	this->manager = manager;
+
 	pos_x_holder = x_holder;
 	pos_y_holder = y_holder;
 }
-
 
 Missile::~Missile()
 {
@@ -81,22 +90,22 @@ void Missile::Update(int t, int posX, int posY)
 	switch (direction)
 	{
 	case ON_LEFT:
-		isRendering = true;
+		isActive = true;
 		vx = -SPEED;
 		vy = 0;
 		break;
 	case ON_RIGHT:
-		isRendering = true;
+		isActive = true;
 		vx = SPEED;
 		vy = 0;
 		break;
 	case ON_UP:
-		isRendering = true;
+		isActive = true;
 		vy = SPEED;
 		vx = 0;
 		break;
 	case NONE:
-		isRendering = false;
+		isActive = false;
 		vx = 0;
 		vy = 0;
 		break;
@@ -137,7 +146,7 @@ void Missile::ResetPosition()
 void Missile::Reset()
 {
 	//Ngung render
-	isRendering = false;
+	isActive = false;
 
 	//Reset vi tri
 	ResetPosition();

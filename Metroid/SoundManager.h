@@ -23,10 +23,10 @@ enum eSoundId
 	BACKGROUND_MAP,
 
 	// Nhạc nền boss MOTHER BRAIN
-	BACKGROUND_BOSS,
+	BACKGROUND_MOTHER_BRAIN_BOSS,
 
-	//Nhạc nền boss Ridley
-	BACKGROUND_RIDLEY_LAIR,
+	//Nhạc nền boss KRAID
+	BACKGROUND_KRAID_LAIR,
 
 	//Nhạc nền nhặt Item
 	BACKGROUND_ITEM_ACQUIRED,
@@ -34,14 +34,20 @@ enum eSoundId
 	// Nhảy
 	JUMP,
 
-	// Bắn đạn
-	SHOOT,
+	// Bắn đạn thường
+	SHOOT_BULLET,
+
+	// Bắn Missile
+	SHOOT_MISSILE,
 
 	// Đạn hit enemy
 	BULLET_HIT_ENEMY,
 
 	// Samus hit enemy
 	SAMUS_HIT_ENEMY,
+
+	// Samus hit life point
+	BULLET_HIT_LIFE_POINT,
 };
 
 class SoundManager

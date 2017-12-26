@@ -15,37 +15,19 @@ void SoundManager::LoadSound(HWND _hWnd)
 	{
 		MessageBox(NULL, L"Unable to init DirectSound", L"ERROR", MB_OK);
 	}
-	DSBuffer[BACKGROUND_INTRO] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\metroid01.wav");
-	DSBuffer[BACKGROUND_APPEARANCE] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\metroid02.wav");
-	DSBuffer[BACKGROUND_BOSS] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\metroid10.wav");
-	DSBuffer[BACKGROUND_MAP] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\metroid03.wav");
-	DSBuffer[BACKGROUND_RIDLEY_LAIR] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\metroid06.wav");
-	DSBuffer[BACKGROUND_ITEM_ACQUIRED] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\metroid08.wav");
+	DSBuffer[BACKGROUND_INTRO] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\Intro.wav");
+	DSBuffer[BACKGROUND_APPEARANCE] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\Appearance.wav");
+	DSBuffer[BACKGROUND_MOTHER_BRAIN_BOSS] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\Brain Mother.wav");
+	DSBuffer[BACKGROUND_MAP] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\Map.wav");
+	DSBuffer[BACKGROUND_KRAID_LAIR] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\Kraid's Lair.wav");
+	DSBuffer[BACKGROUND_ITEM_ACQUIRED] = LoadWaveToSoundBuffer(L"Resources\\sound\\background\\Item acquired.wav");
 
 	DSBuffer[JUMP] = LoadWaveToSoundBuffer(L"Resources\\sound\\sfx\\jump.wav");
 	DSBuffer[BULLET_HIT_ENEMY] = LoadWaveToSoundBuffer(L"Resources\\sound\\sfx\\butllet_hit_enemy.wav");
+	DSBuffer[BULLET_HIT_LIFE_POINT] = LoadWaveToSoundBuffer(L"Resources\\sound\\sfx\\samus_hit_life_point.wav");
 	DSBuffer[SAMUS_HIT_ENEMY] = LoadWaveToSoundBuffer(L"Resources\\sound\\sfx\\samus_hit_enemy.wav");
-	DSBuffer[SHOOT] = LoadWaveToSoundBuffer(L"Resources\\sound\\sfx\\shoot.wav");
-
-	//DSBuffer[EATCRYSTAL] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\EATCRYSTAL.wav");
-	//DSBuffer[EATHEART] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\EATHEART.wav");
-	//DSBuffer[EATMONEY] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\EATMONEY.wav");
-	//DSBuffer[EATPOTION] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\EATPOTION.wav");
-	//DSBuffer[EATWEAPON_CHICKEN] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\EATWEAPON_CHICKEN_MULTIPLY.wav");
-	//DSBuffer[HITSOFT] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\HITSOFT.wav");
-	//DSBuffer[HITSTEEL] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\HITSTEEL.wav");
-	//DSBuffer[HOLYWATERBREAK] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\HOLYWATERBREAK.wav");
-	//DSBuffer[INJURED] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\INJURED.wav");
-	//DSBuffer[SOUNDKNIFE] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\KNIFE.wav");
-	//DSBuffer[MAINGATE] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\MAINGATE.wav");
-	//DSBuffer[PAUSE] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\PAUSE.wav");
-	//DSBuffer[POTIONIMMORTAL] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\POTIONIMMORTAL.wav");
-	//DSBuffer[SHOWSECRETITEM] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\SHOWSECRETITEM.wav");
-	//DSBuffer[TETRENCAOXUONG] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\TETRENCAOXUONG.wav");
-	//DSBuffer[TICKTICKTICK] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\TICKTICKTICK.wav");
-	//DSBuffer[TIMENEAREND] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\TIMENEAREND.wav");
-	//DSBuffer[UPWATER] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\UPWATER.wav");
-	//DSBuffer[WHIPATTACK_AXE] = LoadWaveToSoundBuffer("Resources\\Sounds\\sfx\\WHIPATTACK_AXE.wav");
+	DSBuffer[SHOOT_BULLET] = LoadWaveToSoundBuffer(L"Resources\\sound\\sfx\\bullet.wav");
+	DSBuffer[SHOOT_MISSILE] = LoadWaveToSoundBuffer(L"Resources\\sound\\sfx\\missile.wav");
 
 	if (!DSBuffer)
 	{

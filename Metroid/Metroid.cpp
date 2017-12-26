@@ -178,6 +178,7 @@ void Metroid::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 		{
 			if (IsKeyDown(DIK_X))
 			{
+				Game::gameSound->playSound(JUMP);
 				world->samus->setNormaly(1.0f);
 				if (world->samus->GetState() != ON_SOMERSAULT_RIGHT /*&& samus->GetState() != ON_JUMP_AIM_UP_RIGHT*/)
 				{
@@ -212,6 +213,7 @@ void Metroid::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 		{
 			if (IsKeyDown(DIK_X))
 			{
+				Game::gameSound->playSound(JUMP);
 				world->samus->setNormaly(1.0f);
 				if (world->samus->GetState() != ON_SOMERSAULT_LEFT /*&& samus->GetState() != ON_JUMP_AIM_UP_LEFT*/)
 				{
@@ -235,6 +237,7 @@ void Metroid::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 	}
 	else if (IsKeyDown(DIK_X))
 	{
+		Game::gameSound->playSound(JUMP);
 		world->samus->setgravity(FALLDOWN_VELOCITY_DECREASE);
 		world->samus->setNormaly(1.0f);
 		if (world->samus->GetVelocityXLast() < 0)
@@ -322,10 +325,15 @@ void Metroid::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 			if (world->samus->GetState() == IDLE_RIGHT)
 				world->samus->SetState(IDLING_AIM_UP_RIGHT);
 			if (world->samus->GetState() == ON_JUMP_LEFT/* || world->samus->GetState() == ON_JUMPING_SHOOTING_LEFT*/)
+			{
 				world->samus->SetState(ON_JUMP_AIM_UP_LEFT);
+				Game::gameSound->playSound(JUMP);
+			}
 			if (world->samus->GetState() == ON_JUMP_RIGHT/* || world->samus->GetState() == ON_JUMPING_SHOOTING_RIGHT*/)
+			{
 				world->samus->SetState(ON_JUMP_AIM_UP_RIGHT);
-
+				Game::gameSound->playSound(JUMP);
+			}
 			if (world->samus->GetState() == ON_MORPH_LEFT)
 				world->samus->SetState(IDLE_LEFT);
 			if (world->samus->GetState() == ON_MORPH_RIGHT)
@@ -334,6 +342,8 @@ void Metroid::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 
 		if (IsKeyDown(DIK_Z))
 		{
+			//Để mặc định đạn thường trước
+			Game::gameSound->playSound(SHOOT_BULLET);
 			//State Đứng bắn lên
 			if (world->samus->GetState() == IDLING_AIM_UP_LEFT)
 			{
@@ -351,13 +361,11 @@ void Metroid::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 			if (world->samus->GetState() == AIMING_UP_LEFT)
 			{
 				world->samus->SetState(AIMING_UP_LEFT);
-				Game::gameSound->playSound(SHOOT);
 				_Shoot(ON_UP);
 			}
 			if (world->samus->GetState() == AIMING_UP_RIGHT)
 			{
 				world->samus->SetState(AIMING_UP_RIGHT);
-				Game::gameSound->playSound(SHOOT);
 				_Shoot(ON_UP);
 			}
 			//State Nhảy bắn lên => bug
