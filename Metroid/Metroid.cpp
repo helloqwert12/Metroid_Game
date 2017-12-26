@@ -4,6 +4,7 @@
 #include "utils.h"
 #include "Collision.h"
 #include "BulletManager.h"
+DWORD last_time;
 void Metroid::_InitBackground()
 {
 }
@@ -12,7 +13,7 @@ void Metroid::_InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 {
 	world->samus->InitSprites(d3ddv);
 	//tiles->InitSprites(d3ddv);
-	
+	intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 372, 155, 1);
 	//tiles->InitSprites(d3ddv);
 	world->bullets->InitSprites(d3ddv);
 }
@@ -102,12 +103,12 @@ void Metroid::Update(float Delta)
 
 void Metroid::UpdateIntro(float Delta)
 {
-	//DWORD now = GetTickCount();
-	//if (now - Delta > 1000 / ANIMATE_RATE)
-	//{
-	//	intro->Next();
-	//	Delta = now;
-	//}
+	DWORD now = GetTickCount();
+	if (now - last_time > 1000 / ANIMATE_RATE)
+	{
+		intro->Next();
+		last_time = now;
+	}
 }
 
 void Metroid::UpdateFrame(float Delta)
@@ -151,9 +152,11 @@ void Metroid::RenderStartScreen(LPDIRECT3DDEVICE9 d3ddv)
 
 void Metroid::RenderIntro(LPDIRECT3DDEVICE9 d3ddv)
 {
-	//spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-	//intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 372, 1, 154);
-	//spriteHandler->End();
+	//Camera::currentCamX = 0;
+	//Camera::currentCamY = 0;
+	spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+	intro->Render(0, 0);
+	spriteHandler->End();
 }
 
 void Metroid::RenderFrame(LPDIRECT3DDEVICE9 d3ddv)

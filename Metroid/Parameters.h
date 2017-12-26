@@ -120,11 +120,10 @@ class Block;
 //================== ENEMY =====================
 //================== BEDGEHOG =====================
 #define ENEMY_SPRITE_PATH L"sprites\\enemy\\metroid_enemies_sheet.png"
-
 #define BEDGEHOG_WIDTH 36
 #define BEDGEHOG_HEIGHT 32
-
 #define BEDGEHOG_SPRITE_COUNT 2
+#define BEDGEHOG_SPEED 0.05f;
 
 //--YElLOW
 #define BEDGEHOG_YELLOW_UP "sprites\\enemy\\BEDGEHOG_YELLOW_UP.txt"
@@ -154,7 +153,7 @@ class Block;
 #define BLOCK_WIDTH 36
 #define BLOCK_HEIGHT 20
 #define BLOCK_SPRITE_COUNT 1
-#define BLOCK_SPEED 0.05f
+#define BLOCK_SPEED 0.0001f
 
 //--YElLOW
 #define BLOCK_LEFT "sprites\\enemy\\BLOCK_LEFT.txt"
@@ -207,3 +206,10 @@ enum ENEMY_TYPE
 	BLOCK
 };
 //================= END ENEMY TYPE =============
+
+#define EXPLOSION_SPRITE_PATH L"sprites\\enemy\\explosion.png"
+
+#define EXPLOSION_WIDTH 64
+#define EXPLOSION_HEIGHT 64
+
+#define EXPLOSION_SPRITE_COUNT 3
