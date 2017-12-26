@@ -13,6 +13,7 @@ class QNode;
 class Loader;
 class Brick;
 class Bedgehog;
+class Block;
 
 //================ SCREEN RESOLUTION ================
 #define GAME_SCREEN_RESOLUTION_640_480_24   0
