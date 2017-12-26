@@ -93,7 +93,7 @@ public:
 	void Update(int t);
 	void Render();
 	void Destroy();
-	void Response(GameObject *target, const float &DeltaTime);
+	void Response(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
 	void SlideFromGround(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
 	//================= END OVERRIDE VIRTUAL METHOD =============
 };
