@@ -1,4 +1,6 @@
 ﻿#include "Bedgehog.h"
+#include "World.h"
+#include "GroupObject.h"
 
 Bedgehog::Bedgehog()
 {
@@ -15,6 +17,10 @@ Bedgehog::Bedgehog(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy
 	//--TO DO: Khởi tạo collider cho Bedgehog (Khang)
 	collider = new Collider();
 	collider->SetCollider(0, 0, -BEDGEHOG_HEIGHT, BEDGEHOG_WIDTH);
+
+	//Set vận tốc
+	vx = BEDGEHOG_SPEED;
+	vy = 0;
 }
 
 
@@ -71,8 +77,38 @@ void Bedgehog::Update(int t)
 		return;
 	}
 
+	//vy += -FALLDOWN_VELOCITY_DECREASE;
+
+	//Kiểm tra va chạm
+	//for (int i = 0; i < manager->quadtreeGroup->size; i++)
+	//{
+	//	switch (manager->quadtreeGroup->objects[i]->GetType())
+	//	{
+	//	case BRICK:
+	//		float timeScale = SweptAABB(manager->quadtreeGroup->objects[i], t);
+	//		if (timeScale < 1.0f)
+	//		{
+	//			
+	//			pos_x += vx * timeScale;
+	//			pos_y += vy * timeScale;
+
+	//			//Push
+	//			float magnitude = sqrt((vx * vx + vy * vy)) * (1.0f - timeScale);
+	//			float dotprod = vx * normaly + vy * normalx;
+	//			if (dotprod > 0.0f)
+	//				dotprod = 1.0f;
+	//			else if (dotprod < 0.0f)
+	//				dotprod = -1.0f;
+	//			vx = dotprod * normaly * magnitude;
+	//			vy = dotprod * normalx * magnitude;
+
+	//		}
+	//		break;
+	//	}
+	//}
+
 	pos_x += vx*t;
-	pos_y += vx*t;
+	pos_y += vy*t;
 
 	DWORD now = GetTickCount();
 	if (now - last_time > 1000 / ANIMATE_RATE)
