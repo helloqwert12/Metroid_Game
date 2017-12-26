@@ -111,9 +111,9 @@ class Bedgehog;
 
 #define ANIMATE_RATE 15
 
-#define JUMP_VELOCITY_BOOST 0.05f
-#define JUMP_VELOCITY_BOOST_FIRST 0.8f
-#define FALLDOWN_VELOCITY_DECREASE 0.2f
+#define JUMP_VELOCITY_BOOST 0.08f
+#define JUMP_VELOCITY_BOOST_FIRST 0.9f
+#define FALLDOWN_VELOCITY_DECREASE 0.15f
 //================== END SAMUS ====================
 
 //================== ENEMY =====================

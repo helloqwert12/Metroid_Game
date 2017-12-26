@@ -303,7 +303,11 @@ void Samus::Update(int t)
 		switch (manager->quadtreeGroup->objects[i]->GetType())
 		{
 		case BRICK:
-			this->Response(manager->quadtreeGroup->objects[i], t);
+			float timeScale = SweptAABB(manager->quadtreeGroup->objects[i], t);
+			if (timeScale < 1.0f)
+			{
+				SlideFromGround(manager->quadtreeGroup->objects[i], t, timeScale);
+			}
 			break;
 		}
 

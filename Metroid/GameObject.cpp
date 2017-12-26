@@ -505,14 +505,14 @@ void GameObject::SlideFromGround(GameObject *target, const float &DeltaTime, con
 	// "góc lag" sẽ làm đi luôn vào trong tường
 
 
-	if (normalx > 0.1f)	// tông bên phải
+	if (normalx > 0.1f)	// tông bên phải gạch
 	{
 		this->pos_x = (target->GetPosX() + target->collider->GetRight() - this->collider->GetLeft()) + 0.1f;
 		pos_x -= vx*DeltaTime;
 		//vx = 0.0f;
 	}
 
-	else if (normalx < -0.1f)// tông bên trái
+	else if (normalx < -0.1f)// tông bên trái gạch
 	{
 		this->pos_x = (target->GetPosX() + target->collider->GetLeft() - this->collider->GetRight()) - 0.1f;
 		pos_x -= vx*DeltaTime;
@@ -520,11 +520,16 @@ void GameObject::SlideFromGround(GameObject *target, const float &DeltaTime, con
 	}
 
 
-	else if (normaly > 0.1f)	// tông ở trên
+	if (normaly < -0.1f)	// tông ở dưới lên
 	{
-		this->pos_y = (target->pos_y + target->collider->GetTop() - this->collider->GetBottom()) + 0.1f;
-		vy = 0.0f;
+		//this->pos_y = (target->pos_y + target->collider->GetTop() - this->collider->GetBottom()) - 0.1f;
+		pos_y -= vy*DeltaTime;
+		vy = 0;
 	}
-	else
-		return;
+	else if (normaly > 0.1f) // trên xuống (không vào normaly được)
+	{
+
+	}
+
+	return;
 }//----------------------------------
