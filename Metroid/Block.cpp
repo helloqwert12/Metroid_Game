@@ -1,4 +1,6 @@
 ﻿#include "Block.h"
+#include "World.h"
+#include "GroupObject.h"
 
 Block::Block()
 {
@@ -15,6 +17,9 @@ Block::Block(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type)
 	//--TO DO: Khởi tạo collider cho Block (Khang)
 	collider = new Collider();
 	collider->SetCollider(0, 0, -BLOCK_HEIGHT, BLOCK_WIDTH);
+
+	vy = 0;
+	vx = BLOCK_SPEED;
 }
 
 
@@ -52,8 +57,26 @@ void Block::Update(int t)
 		return;
 	}
 
+	// Xét va chạm, nếu va chạm thì đi ngược lại
+	for (int i = 0; i < manager->quadtreeGroup->size; i++)
+	{
+		switch (manager->quadtreeGroup->objects[i]->GetType())
+		{
+		case BRICK:
+			float timeScale = SweptAABB(manager->quadtreeGroup->objects[i], t);
+			// Nếu có va chạm
+			if (timeScale < 1.0f)
+			{
+				// Đổi hướng di chuyển
+				vx = -vx;
+			}
+			break;
+		}
+		
+	}
+
 	pos_x += vx*t;
-	pos_y += vx*t;
+	pos_y += vy*t;
 
 	DWORD now = GetTickCount();
 	if (now - last_time > 1000 / ANIMATE_RATE)

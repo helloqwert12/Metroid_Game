@@ -153,8 +153,8 @@ class Block;
 
 #define BLOCK_WIDTH 36
 #define BLOCK_HEIGHT 20
-
 #define BLOCK_SPRITE_COUNT 1
+#define BLOCK_SPEED 0.05f
 
 //--YElLOW
 #define BLOCK_LEFT "sprites\\enemy\\BLOCK_LEFT.txt"
