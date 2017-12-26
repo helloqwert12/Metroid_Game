@@ -114,7 +114,7 @@ class Block;
 
 #define JUMP_VELOCITY_BOOST 0.05f
 #define JUMP_VELOCITY_BOOST_FIRST 0.6f
-#define FALLDOWN_VELOCITY_DECREASE 0.09f
+#define FALLDOWN_VELOCITY_DECREASE 0.07f
 //================== END SAMUS ====================
 
 //================== ENEMY =====================
