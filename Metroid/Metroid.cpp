@@ -435,103 +435,100 @@ void Metroid::OnKeyDown(int KeyCode)
 {
 	switch (screenMode)
 	{
-		// intro
-	case GAMEMODE_INTRO:
-	{
-		if (KeyCode == DIK_RETURN)
+			// intro
+		case GAMEMODE_INTRO:
 		{
-			this->screenMode = GAMEMODE_START;
+			if (KeyCode == DIK_RETURN)
+			{
+				this->screenMode = GAMEMODE_START;
+			}
+			break;
+		}
+		// start screen
+		case GAMEMODE_START://------------------------------------------------
+		{
+			if (KeyCode == DIK_RETURN)
+			{
+				this->screenMode = GAMEMODE_GAMERUN;
+				Game::gameSound->stopSound(BACKGROUND_INTRO);
+				Game::gameSound->playSoundLoop(BACKGROUND_MAP);
+			}
 		}
 		break;
-	}
-	// start screen
-	case GAMEMODE_START://------------------------------------------------
-	{
-		if (KeyCode == DIK_RETURN)
+		// game running
+		case GAMEMODE_GAMERUN:// -------------------------------------------------
 		{
-			this->screenMode = GAMEMODE_GAMERUN;
-			Game::gameSound->stopSound(BACKGROUND_INTRO);
-			Game::gameSound->playSoundLoop(BACKGROUND_MAP);
+			switch (KeyCode)
+			{
+			case DIK_DOWN:
+				//if samus is idle then do morph
+				if (world->samus->GetState() == IDLE_LEFT)
+				{
+					world->samus->SetVelocityX(0);
+					world->samus->ResetAllSprites();
+					world->samus->SetState(ON_MORPH_LEFT);
+				}
+				else if (world->samus->GetState() == IDLE_RIGHT)
+				{
+					world->samus->SetVelocityX(0);
+					world->samus->ResetAllSprites();
+					world->samus->SetState(ON_MORPH_RIGHT);
+				}
+				else if (world->samus->GetState() == ON_MORPH_LEFT) //otherwise, reset to idle (left of right)
+				{
+					world->samus->SetVelocityX(0);
+					world->samus->ResetAllSprites();
+					world->samus->SetState(IDLE_LEFT);
+					//world->samus->setDirection(DirectCollision::RIGHT);
+				}
+				else if (world->samus->GetState() == ON_MORPH_RIGHT)
+				{
+					world->samus->SetVelocityX(0);
+					world->samus->ResetAllSprites();
+					world->samus->SetState(IDLE_RIGHT);
+					//world->samus->setDirection(DirectCollision::LEFT);
+				}
+				break;
+				//case DIK_X:
+				//	//**********************************************************************************
+				//	// [CAUTION!!!] Vi pos_y chua chinh theo toa do World, code duoi day chi la tam thoi,
+				//	// se cap nhat lai sau
+				//	if (samus->GetPosY() >= GROUND_Y)
+				//	{
+				//		if (samus->GetVelocityXLast() < 0)
+				//		{
+				//			samus->SetState(ON_JUMP_LEFT);
+				//			samus->SetVelocityY(samus->GetVelocityY() - JUMP_VELOCITY_BOOST);
+				//		}
+				//		else if (samus->GetVelocityXLast() > 0)
+				//		{
+				//			samus->SetState(ON_JUMP_RIGHT);
+				//			samus->SetVelocityY(samus->GetVelocityY() - JUMP_VELOCITY_BOOST);
+				//		}
+				//	}
+				//	//***********************************************************************************
+				//	break;
+			case DIK_LEFT:
+				/*if (samus->GetState() == ON_JUMP_RIGHT)
+					samus->SetState(ON_JUMP_LEFT);*/
+				if (world->samus->GetState() == ON_MORPH_RIGHT)
+					world->samus->SetState(ON_MORPH_LEFT);
+				/*else if (samus->GetState() != ON_MORPH_LEFT && samus->GetState() != ON_JUMP_LEFT && samus->GetState() != ON_JUMP_RIGHT
+					&& samus->GetState() != ON_SOMERSAULT_RIGHT)
+					samus->SetState(LEFTING);*/
+				break;
+			case DIK_RIGHT:
+				/*if (samus->GetState() == ON_JUMP_LEFT)
+					samus->SetState(ON_JUMP_RIGHT);*/
+				if (world->samus->GetState() == ON_MORPH_LEFT)
+					world->samus->SetState(ON_MORPH_RIGHT);
+				/*else if (world->samus->GetState() != ON_MORPH_RIGHT && world->samus->GetState() != ON_JUMP_LEFT && world->samus->GetState() != ON_JUMP_RIGHT
+					&& world->samus->GetState() != ON_SOMERSAULT_LEFT)
+					world->samus->SetState(RIGHTING);*/
+				break;
+			}
 		}
 	}
-	break;
-	// game running
-	case GAMEMODE_GAMERUN:// -------------------------------------------------
-	{
-		switch (KeyCode)
-		{
-		case DIK_DOWN:
-			//if samus is idle then do morph
-			if (world->samus->GetState() == IDLE_LEFT)
-			{
-				world->samus->SetVelocityX(0);
-				world->samus->ResetAllSprites();
-				world->samus->SetState(ON_MORPH_LEFT);
-			}
-			else if (world->samus->GetState() == IDLE_RIGHT)
-			{
-				world->samus->SetVelocityX(0);
-				world->samus->ResetAllSprites();
-				world->samus->SetState(ON_MORPH_RIGHT);
-			}
-			else if (world->samus->GetState() == ON_MORPH_LEFT) //otherwise, reset to idle (left of right)
-			{
-				world->samus->SetVelocityX(0);
-				world->samus->ResetAllSprites();
-				world->samus->SetState(IDLE_LEFT);
-				//world->samus->setDirection(DirectCollision::RIGHT);
-			}
-			else if (world->samus->GetState() == ON_MORPH_RIGHT)
-			{
-				world->samus->SetVelocityX(0);
-				world->samus->ResetAllSprites();
-				world->samus->SetState(IDLE_RIGHT);
-				//world->samus->setDirection(DirectCollision::LEFT);
-			}
-			break;
-			//case DIK_X:
-			//	//**********************************************************************************
-			//	// [CAUTION!!!] Vi pos_y chua chinh theo toa do World, code duoi day chi la tam thoi,
-			//	// se cap nhat lai sau
-			//	if (samus->GetPosY() >= GROUND_Y)
-			//	{
-			//		if (samus->GetVelocityXLast() < 0)
-			//		{
-			//			samus->SetState(ON_JUMP_LEFT);
-			//			samus->SetVelocityY(samus->GetVelocityY() - JUMP_VELOCITY_BOOST);
-			//		}
-			//		else if (samus->GetVelocityXLast() > 0)
-			//		{
-			//			samus->SetState(ON_JUMP_RIGHT);
-			//			samus->SetVelocityY(samus->GetVelocityY() - JUMP_VELOCITY_BOOST);
-			//		}
-			//	}
-			//	//***********************************************************************************
-			//	break;
-		case DIK_LEFT:
-			/*if (samus->GetState() == ON_JUMP_RIGHT)
-				samus->SetState(ON_JUMP_LEFT);*/
-			if (world->samus->GetState() == ON_MORPH_RIGHT)
-				world->samus->SetState(ON_MORPH_LEFT);
-			/*else if (samus->GetState() != ON_MORPH_LEFT && samus->GetState() != ON_JUMP_LEFT && samus->GetState() != ON_JUMP_RIGHT
-				&& samus->GetState() != ON_SOMERSAULT_RIGHT)
-				samus->SetState(LEFTING);*/
-			break;
-		case DIK_RIGHT:
-			/*if (samus->GetState() == ON_JUMP_LEFT)
-				samus->SetState(ON_JUMP_RIGHT);*/
-			if (world->samus->GetState() == ON_MORPH_LEFT)
-				world->samus->SetState(ON_MORPH_RIGHT);
-			/*else if (world->samus->GetState() != ON_MORPH_RIGHT && world->samus->GetState() != ON_JUMP_LEFT && world->samus->GetState() != ON_JUMP_RIGHT
-				&& world->samus->GetState() != ON_SOMERSAULT_LEFT)
-				world->samus->SetState(RIGHTING);*/
-			break;
-		}
-	}
-
-	}
-
-
 }
 
 DWORD Metroid::GetTickPerFrame()

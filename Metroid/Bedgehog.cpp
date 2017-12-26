@@ -72,7 +72,7 @@ void Bedgehog::Update(int t)
 	}
 
 	pos_x += vx*t;
-	pos_y += vx*t;
+	pos_y += vy*t;
 
 	DWORD now = GetTickCount();
 	if (now - last_time > 1000 / ANIMATE_RATE)
