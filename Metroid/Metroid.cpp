@@ -13,7 +13,7 @@ void Metroid::_InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 {
 	world->samus->InitSprites(d3ddv);
 	//tiles->InitSprites(d3ddv);
-	intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 372, 155, 1);
+	intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 640, 156, 1);
 	//tiles->InitSprites(d3ddv);
 	world->bullets->InitSprites(d3ddv);
 }
@@ -104,10 +104,10 @@ void Metroid::Update(float Delta)
 void Metroid::UpdateIntro(float Delta)
 {
 	DWORD now = GetTickCount();
-	if (now - last_time > 1000 / ANIMATE_RATE)
+	if (now - Delta  > 1000 / 100)
 	{
 		intro->Next();
-		last_time = now;
+		Delta = now;
 	}
 }
 
@@ -142,7 +142,7 @@ void Metroid::RenderStartScreen(LPDIRECT3DDEVICE9 d3ddv)
 {
 	// Background
 	d3ddv->StretchRect(
-		startscreen,			// from 
+		startscreen,		// from 
 		NULL,				// which portion?
 		_BackBuffer,		// to 
 		NULL,				// which portion?
@@ -152,8 +152,8 @@ void Metroid::RenderStartScreen(LPDIRECT3DDEVICE9 d3ddv)
 
 void Metroid::RenderIntro(LPDIRECT3DDEVICE9 d3ddv)
 {
-	//Camera::currentCamX = 0;
-	//Camera::currentCamY = 0;
+	Camera::currentCamX = -310;
+	Camera::currentCamY = 250;
 	spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 	intro->Render(0, 0);
 	spriteHandler->End();
