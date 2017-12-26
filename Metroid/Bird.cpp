@@ -1,4 +1,6 @@
 ﻿#include "Bird.h"
+#include "World.h"
+#include "GroupObject.h"
 
 Bird::Bird()
 {
@@ -12,9 +14,16 @@ Bird::Bird(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type) :
 	//Khởi tạo sprites
 	this->InitSprites();
 
+	width = BLOCK_WIDTH;
+	height = BLOCK_HEIGHT;
+
 	//--TO DO: Khởi tạo collider cho Block (Khang)
 	collider = new Collider();
 	collider->SetCollider(0, 0, -BLOCK_HEIGHT, BLOCK_WIDTH);
+
+	// collider dùng khi samus đi vào vùng va chạm
+	collider_area = new Collider();
+	collider_area->SetCollider(0, -width, -480, width * 2);
 }
 
 
@@ -38,7 +47,6 @@ void Bird::InitSprites()
 
 	state = ON_BIRD_FLY;
 }
-
 void Bird::Update(int t)
 {
 	if (!isActive) return;
@@ -49,9 +57,45 @@ void Bird::Update(int t)
 		isActive = false;
 		return;
 	}
+	// khi samus đi vào vùng va chạm
+
+	if (this->IsCollide(manager->samus) == true)
+	{
+		vy = -0.1f;
+		//vx = -0.05f;	
+	}
+	if (pos_x < manager->samus->GetPosX())
+	{
+		vx = 0.02f;
+	}
+	else
+	{
+		vx = -0.02f;
+	}
+
+	for (int i = 0; i < manager->quadtreeGroup->size; i++)
+	{
+		switch (manager->quadtreeGroup->objects[i]->GetType())
+		{
+		case BRICK:
+			float timeScale = SweptAABB(manager->quadtreeGroup->objects[i], t);
+			if (timeScale < 1.0f)
+			{
+				SlideFromGround(manager->quadtreeGroup->objects[i], t, timeScale);
+				this->Destroy();
+			}
+			break;
+		}
+	}
+
+	/*float scaletime = SweptAABB(manager->samus, t);
+	if (scaletime < 1.0f)
+	{
+		Deflect(manager->samus, t, scaletime);
+	}*/
 
 	pos_x += vx * t;
-	pos_y += vx * t;
+	pos_y += vy * t;
 
 	DWORD now = GetTickCount();
 	if (now - last_time > 1000 / ANIMATE_RATE)
@@ -84,4 +128,32 @@ void Bird::Render()
 		break;
 	}
 	spriteHandler->End();
+}
+
+bool Bird::IsCollide(GameObject * target)
+{
+	if (target->GetCollider() == NULL || this->collider_area == NULL)
+		return false;
+	if (pos_x + collider_area->GetRight() < target->GetPosX())
+		return false;
+	// Kiểm tra phía trên
+	if (pos_y + collider_area->GetBottom() > target->GetPosY())
+		return false;
+	// Kiểm tra bên phải
+	if (pos_x > target->GetPosX() + target->GetCollider()->GetRight())
+		return false;
+	// Kiểm tra phía dưới
+	if (pos_y < target->GetPosY() - target->GetCollider()->GetBottom())
+		return false;
+	return true;
+}
+
+void Bird::Response(GameObject * target, const float & DeltaTime, const float & CollisionTimeScale)
+{
+
+}
+
+void Bird::Destroy()
+{
+
 }
