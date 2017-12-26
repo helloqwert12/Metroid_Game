@@ -153,6 +153,9 @@
     <ClCompile Include="Missile.cpp">
       <Filter>Source Files\Projectile</Filter>
     </ClCompile>
+    <ClCompile Include="PositionManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h">
@@ -238,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="SoundManager.h">
       <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

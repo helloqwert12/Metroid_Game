@@ -150,6 +150,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Metroid.cpp" />
     <ClCompile Include="Missile.cpp" />
+    <ClCompile Include="PositionManager.cpp" />
     <ClCompile Include="QNode.cpp" />
     <ClCompile Include="QTreeObject.cpp" />
     <ClCompile Include="QuadTree.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Metroid.h" />
     <ClInclude Include="Missile.h" />
     <ClInclude Include="Parameters.h" />
+    <ClInclude Include="PositionManager.h" />
     <ClInclude Include="QNode.h" />
     <ClInclude Include="QTreeObject.h" />
     <ClInclude Include="QuadTree.h" />
