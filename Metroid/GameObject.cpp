@@ -211,23 +211,38 @@ bool GameObject::IsCollide(GameObject* target)
 	if ((target->GetCollider() == NULL) || (this->collider == NULL))
 		return false;
 
-	// cạnh trái của this > cạnh phải của target
-	if ((pos_x + collider->GetLeft()) > (target->GetPosX() + target->GetCollider()->GetRight()))
-		return false;
+	//// cạnh trái của this > cạnh phải của target
+	//if ((pos_x + collider->GetLeft()) > (target->GetPosX() + target->GetCollider()->GetRight()))
+	//	return false;
 
-	// cạnh phải của this < cạnh trái của target
-	if ((pos_x + collider->GetRight()) < (target->GetPosX() + target->GetCollider()->GetLeft()))
-		return false;
+	//// cạnh phải của this < cạnh trái của target
+	//if ((pos_x + collider->GetRight()) < (target->GetPosX() + target->GetCollider()->GetLeft()))
+	//	return false;
 
-	// cạnh trên của this < cạnh dưới của target
-	if ((pos_y + collider->GetTop()) < (target->GetPosY() + target->GetCollider()->GetBottom()))
-		return false;
+	//// cạnh trên của this < cạnh dưới của target
+	//if ((pos_y + collider->GetTop()) < (target->GetPosY() + target->GetCollider()->GetBottom()))
+	//	return false;
 
-	// cạnh dưới của this > cạnh trên của target
-	if ((pos_y + collider->GetBottom()) > (target->GetPosX() + target->GetCollider()->GetTop()))
-		return false;
+	//// cạnh dưới của this > cạnh trên của target
+	//if ((pos_y + collider->GetBottom()) > (target->GetPosX() + target->GetCollider()->GetTop()))
+	//	return false;
 
-	// ko thoả điều kiện nào hết => đang nằm lồng vào nhau
+	//// ko thoả điều kiện nào hết => đang nằm lồng vào nhau
+	//return true;
+
+
+	// Kiềm tra bên trái
+	if (pos_x + collider->GetRight() < target->GetPosX())
+		return false;
+	// Kiểm tra phía trên
+	if (pos_y + collider->GetBottom() > target->GetPosY());
+		return false;
+	// Kiểm tra bên phải
+	if (pos_x > target->GetPosX() + target->GetCollider()->GetRight())
+		return false;
+	// Kiểm tra phía dưới
+	if (pos_y < target->GetPosY() - target->GetCollider()->GetBottom())
+		return false;
 	return true;
 }
 //////// khang
@@ -497,7 +512,8 @@ void GameObject::Deflect(GameObject *target, const float &DeltaTime, const float
 	pos_x += vx * (1.0f - CollisionTimeScale) * DeltaTime;
 	pos_y += vy * (1.0f - CollisionTimeScale) * DeltaTime;
 }
-// nâng lên khi va chạm với ground
+
+// Phản xạ khi va chạm với ground
 void GameObject::SlideFromGround(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale)
 {
 	//ResponseFrom(target, _DeltaTime, collisionTimeScale);
@@ -519,17 +535,17 @@ void GameObject::SlideFromGround(GameObject *target, const float &DeltaTime, con
 		//vx = 0.0f;
 	}
 
-
-	if (normaly < -0.1f)	// tông ở dưới lên
+	if (normaly > 0.1f) // trên xuống (không vào normaly được)
+	{
+		this->pos_y = (target->pos_y + target->collider->GetTop() - this->collider->GetBottom()) + 0.1f;
+		pos_y -= vy*DeltaTime;
+		vy = 0;
+	}
+	else if (normaly < -0.1f)	// tông ở dưới lên
 	{
 		//this->pos_y = (target->pos_y + target->collider->GetTop() - this->collider->GetBottom()) - 0.1f;
 		pos_y -= vy*DeltaTime;
 		vy = 0;
 	}
-	else if (normaly > 0.1f) // trên xuống (không vào normaly được)
-	{
-
-	}
-
 	return;
 }//----------------------------------

@@ -9,7 +9,7 @@
 #include "trace.h"
 #include "Camera.h"
 
-#define GROUND_Y 120
+#define GROUND_Y 150
 enum SAMUS_STATE {
 	APPEARANCE,
 	IDLE_LEFT, 
@@ -94,6 +94,7 @@ public:
 	void Render();
 	void Destroy();
 	void Response(GameObject *target, const float &DeltaTime);
+	void SlideFromGround(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
 	//================= END OVERRIDE VIRTUAL METHOD =============
 };
 #endif // !_SAMUS_H

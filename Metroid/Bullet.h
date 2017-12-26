@@ -2,7 +2,7 @@
 #ifndef _BULLET_H_
 #define _BULLET_H_
 
-#include "GameObject.h"
+#include "BulletObject.h"
 #include "Sprite.h"
 #include "Parameters.h"
 
@@ -18,41 +18,20 @@
 
 
 
-class Bullet : public GameObject
+class Bullet : public BulletObject
 {
-private:
-	int pos_x_holder;
-	int pos_y_holder;
-
-	int limit_dist_x;		//limit distance of x
-	int limit_dist_y;		//limit distance of y;
-
-	World * manager;
-	
-
-	LPD3DXSPRITE _SpriteHandler;
-	BULLET_DIRECTION direction;
+protected:
 	Sprite * bullet;
-
 	
 public:
-	bool isRendering;		//determine if the bullet is in rendering (in case out of distance_limit -> not render)
 
 	Bullet(World * manager);
 	Bullet(World * manager, int x_holder, int y_holder);
 	~Bullet();
 
 	void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
-	void InitPosition(int posX, int posY);
-
-	BULLET_DIRECTION GetDirection();
-	void SetDirection(BULLET_DIRECTION value);
-	void Update(int t, int posX, int posY);
 	void Render();
-	void ResetPosition();
-	void Reset();
-	void Release();		//destroy the bullet
-	void Shoot(BULLET_DIRECTION dir);
+	
 };
 
 #endif // !_BULLET_H

@@ -4,7 +4,7 @@
 #include "Bullet.h"
 #include "Missile.h"
 #include "Parameters.h"
-#define BULLET_COUNT 20
+#define BULLET_COUNT 5
 
 class BulletManager
 {
