@@ -246,7 +246,7 @@ enum ENEMY_TYPE
 //================= END ENEMY TYPE =============
 
 //================= BOSSES =================
-#define BOSS_SPRITE_PATH L"sprites\\bosses\\NES - Metroid - Bosses.png"
+#define BOSS_SPRITE_PATH L"sprites\\bosses\\boss_sprtesheet.png"
 
 //================= MOTHER_BRAIN =================
 #define MOTHER_BRAIN_WIDTH 160
@@ -296,12 +296,6 @@ enum SENTRY_TYPE
 #define SENTRY_BULLET_BOTTOMLEFT "sprites\\bosses\\SENTRY_BULLET_BOTTOM_LEFT.txt"
 #define SENTRY_BULLET_LEFT "sprites\\bosses\\SENTRY_BULLET_LEFT.txt"
 #define SENTRY_BULLET_TOPLEFT "sprites\\bosses\\SENTRY_BULLET_TOP_LEFT.txt"
-
-//================= END SENTRY BULLET =============
-
-
-
-//================= END BULLET =============
 
 //================= END SENTRY =============
 

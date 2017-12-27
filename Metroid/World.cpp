@@ -35,6 +35,7 @@ World::World(LPD3DXSPRITE spriteHandler, Metroid * metroid)
 	hog_pink = new Bedgehog(spriteHandler, this, BEDGEHOG_PINK);
 	bird = new Bird(spriteHandler, this, BIRD);
 	block = new Block(spriteHandler, this, BLOCK);
+
 	sentry = new Sentry(spriteHandler, this, SENTRY_LEFT);
 	enemyGroup->AddGameObject(hog_yellow);
 	enemyGroup->AddGameObject(hog_pink);

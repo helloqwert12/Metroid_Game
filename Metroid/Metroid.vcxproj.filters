@@ -156,9 +156,6 @@
     <ClCompile Include="Missile.cpp">
       <Filter>Source Files\Projectile</Filter>
     </ClCompile>
-    <ClCompile Include="PositionManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Block.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
@@ -171,16 +168,19 @@
     <ClCompile Include="BulletObject.cpp">
       <Filter>Source Files\Projectile</Filter>
     </ClCompile>
-    <ClCompile Include="SentryBullet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Bird.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Sentry.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SentryBullet.cpp">
+      <Filter>Source Files\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Sentry.cpp">
+      <Filter>Source Files\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
   </ItemGroup>
@@ -269,9 +269,6 @@
     <ClInclude Include="SoundManager.h">
       <Filter>Header Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="PositionManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Block.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
@@ -284,14 +281,17 @@
     <ClInclude Include="BulletObject.h">
       <Filter>Header Files\Projectile</Filter>
     </ClInclude>
-    <ClInclude Include="SentryBullet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Bird.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="PositionManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SentryBullet.h">
+      <Filter>Header Files\Boss</Filter>
+    </ClInclude>
     <ClInclude Include="Sentry.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Boss</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
