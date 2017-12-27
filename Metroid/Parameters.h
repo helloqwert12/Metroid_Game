@@ -147,6 +147,9 @@ class Block;
 #define BIRD_FLY_SPRITE_COUNT 2
 
 #define BIRD_FLY "sprites\\enemy\\BIRD_FLY.txt"
+
+#define BIRD_STANDARD_ANIMATE_RATE 7
+#define BIRD_BOOST_ANIMATE_RATE 20
 //================== END BIRD =================
 
 //================== BLOCK =====================

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _Bird_H_
 #define _Bird_H_
 
@@ -18,6 +18,8 @@ protected:
 	Sprite * fly;
 
 	Collider * collider_area;
+
+	int animate_rate;	// cần biến này vì khi dí theo Samus animate rate thay đổi
 public:
 	Bird();
 	Bird(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type);

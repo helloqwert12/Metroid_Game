@@ -1,6 +1,6 @@
 
 480	2560
-1600	384
+1700	384
 ENDChu thich:
 Dong dau tien min max camera
 Dong thu hai vi tri samus
