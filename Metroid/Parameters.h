@@ -282,7 +282,17 @@ enum SENTRY_TYPE
 //================= BULLET =================
 #define SENTRY_BULLET_WIDTH 16
 #define SENTRY_BULLET_HEIGHT 16
-#define SENTRY_SPRITE_COUNT 1
+#define SENTRY_BULLET_SPRITE_COUNT 1
+#define SENTRY_BULLET_SPIRTE_PATH L"sprites\\bosses\\boss_sprtesheet.png"
+
+#define SENTRY_BULLET_UP ""
+#define SENTRY_BULLET_LEFT ""
+#define SENTRY_BULLET_RIGHT ""
+#define SENTRY_BULLET_BOTTOM ""
+#define SENTRY_BULLET_TOPLEFT ""
+#define SENTRY_BULLET_TOPRIGHT ""
+#define SENTRY_BULLET_BOTTOMLEFT ""
+#define SENTRY_BULLET_BOTTOMRIGHT ""
 //================= END BULLET =============
 
 //================= END SENTRY =============

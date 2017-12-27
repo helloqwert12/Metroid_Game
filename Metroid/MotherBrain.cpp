@@ -10,3 +10,11 @@ MotherBrain::MotherBrain(LPD3DXSPRITE spriteHandler, World * manager)
 MotherBrain::~MotherBrain()
 {
 }
+
+void MotherBrain::Update()
+{
+}
+
+void MotherBrain::Render()
+{
+}

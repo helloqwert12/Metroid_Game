@@ -31,7 +31,14 @@ void SentryBullet::InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 	if (result != D3D_OK) return;
 
 	//Create sprite
-	//up = new Sprite(_SpriteHandler, MISSILE_SPRITE_PATH, MISSILE_UP_SPRITE, MISSILE_UP_WIDTH, MISSILE_UP_HEIGHT, MISSILE_COUNT, SPRITE_PER_ROW);
+	up = new Sprite(_SpriteHandler, SENTRY_BULLET_SPIRTE_PATH, SENTRY_BULLET_UP, SENTRY_BULLET_WIDTH, SENTRY_BULLET_HEIGHT, SENTRY_BULLET_SPRITE_COUNT, SPRITE_PER_ROW);
+	left = new Sprite(_SpriteHandler, SENTRY_BULLET_SPIRTE_PATH, SENTRY_BULLET_LEFT, SENTRY_BULLET_WIDTH, SENTRY_BULLET_HEIGHT, SENTRY_BULLET_SPRITE_COUNT, SPRITE_PER_ROW);
+	right = new Sprite(_SpriteHandler, SENTRY_BULLET_SPIRTE_PATH, SENTRY_BULLET_RIGHT, SENTRY_BULLET_WIDTH, SENTRY_BULLET_HEIGHT, SENTRY_BULLET_SPRITE_COUNT, SPRITE_PER_ROW);
+	bottom = new Sprite(_SpriteHandler, SENTRY_BULLET_SPIRTE_PATH, SENTRY_BULLET_BOTTOM, SENTRY_BULLET_WIDTH, SENTRY_BULLET_HEIGHT, SENTRY_BULLET_SPRITE_COUNT, SPRITE_PER_ROW);
+	topleft = new Sprite(_SpriteHandler, SENTRY_BULLET_SPIRTE_PATH, SENTRY_BULLET_TOPLEFT, SENTRY_BULLET_WIDTH, SENTRY_BULLET_HEIGHT, SENTRY_BULLET_SPRITE_COUNT, SPRITE_PER_ROW);
+	topright = new Sprite(_SpriteHandler, SENTRY_BULLET_SPIRTE_PATH, SENTRY_BULLET_TOPRIGHT, SENTRY_BULLET_WIDTH, SENTRY_BULLET_HEIGHT, SENTRY_BULLET_SPRITE_COUNT, SPRITE_PER_ROW);
+	bottomleft = new Sprite(_SpriteHandler, SENTRY_BULLET_SPIRTE_PATH, SENTRY_BULLET_BOTTOMLEFT, SENTRY_BULLET_WIDTH, SENTRY_BULLET_HEIGHT, SENTRY_BULLET_SPRITE_COUNT, SPRITE_PER_ROW);
+	bottomright = new Sprite(_SpriteHandler, SENTRY_BULLET_SPIRTE_PATH, SENTRY_BULLET_BOTTOMRIGHT, SENTRY_BULLET_WIDTH, SENTRY_BULLET_HEIGHT, SENTRY_BULLET_SPRITE_COUNT, SPRITE_PER_ROW);
 }
 
 void SentryBullet::Update(int t)
@@ -133,28 +140,28 @@ void SentryBullet::Render()
 		switch (direction)
 		{
 		case ON_LEFT:
-		
+			left->Render(pos_x, pos_y);
 			break;
 		case ON_RIGHT:
-			
+			right->Render(pos_x, pos_y);
 			break;
 		case ON_UP:
-			
+			up->Render(pos_x, pos_y);
 			break;
 		case ON_BOTTOM:
-			
+			bottom->Render(pos_x, pos_y);
 			break;
 		case ON_TOPLEFT:
-			
+			topleft->Render(pos_x, pos_y);
 			break;
 		case ON_TOPRIGHT:
-			
+			topright->Render(pos_x, pos_y);
 			break;
 		case ON_BOTTOMLEFT:
-			
+			bottomleft->Render(pos_x, pos_y);
 			break;
 		case ON_BOTTOMRIGHT:
-			
+			bottomright->Render(pos_x, pos_y);
 			break;
 		}
 		_SpriteHandler->End();
