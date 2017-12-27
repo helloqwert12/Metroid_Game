@@ -3,6 +3,7 @@
 #define _METROID_H_
 
 #define STARTSCREEN_FILE L"Resources\\intro\\start_background.png"
+#define INTROSCREEN_FILE L"Resources\\intro\\intro_background.png"
 #define INTRO_FILE L"Resources\\intro\\intro.png"
 #define INTRO "Resources\\intro\\intro.txt"
 
@@ -19,6 +20,7 @@ class Metroid : public Game
 {
 protected:
 	LPDIRECT3DSURFACE9 startscreen;
+	LPDIRECT3DSURFACE9 introscreen;
 
 	LPD3DXSPRITE spriteHandler;
 	World * world;
@@ -44,8 +46,6 @@ private:
 public:
 	Metroid(HINSTANCE hInstance, LPWSTR Name, int Mode, int IsFullScreen, int FrameRate);
 	~Metroid();
-
-	LPDIRECT3DSURFACE9 _Background;
 
 	virtual void LoadResources(LPDIRECT3DDEVICE9 d3ddv);
 	// ---------------------------

@@ -11,10 +11,6 @@ enum BEDGEHOG_STATE
 	ON_BEDGEHOG_BOTTOM,
 	ON_BEDGEHOG_LEFT,
 	ON_BEDGEHOG_RIGHT,
-	ON_BEDGEHOG_PINK_UP,
-	ON_BEDGEHOG_PINK_BOTTOM,
-	ON_BEDGEHOG_PINK_LEFT,
-	ON_BEDGEHOG_PINK_RIGHT
 };
 
 class Bedgehog: public Enemy
@@ -25,10 +21,6 @@ protected:
 	Sprite * bottom;
 	Sprite * left;
 	Sprite * right;
-	Sprite * up_pink;
-	Sprite * bottom_pink;
-	Sprite * left_pink;
-	Sprite * right_pink;
 
 public:
 	Bedgehog();

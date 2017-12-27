@@ -158,6 +158,7 @@
     <ClCompile Include="QTreeObject.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Samus.cpp" />
+    <ClCompile Include="Sentry.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Tiles.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="QTreeObject.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Samus.h" />
+    <ClInclude Include="Sentry.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Tiles.h" />

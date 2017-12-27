@@ -8,6 +8,7 @@ class Enemy : public GameObject
 {
 protected:
 	ENEMY_TYPE enemy_type;
+	SENTRY_TYPE sentry_type; //NEW
 public:
 	Enemy();
 	Enemy(LPD3DXSPRITE spriteHandler, World * manager);

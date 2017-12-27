@@ -13,7 +13,7 @@ void Metroid::_InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 {
 	world->samus->InitSprites(d3ddv);
 	//tiles->InitSprites(d3ddv);
-	intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 640, 156, 1);
+	//intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 640, 156, 1);
 	//tiles->InitSprites(d3ddv);
 	world->bullets->InitSprites(d3ddv);
 }
@@ -25,6 +25,7 @@ void Metroid::_InitPositions()
 	world->hog_pink->InitPostition(1800, 110);
 	world->bird->InitPostition(1500, 410);
 	world->block->InitPostition(1600,100);
+	world->sentry->InitPostition(1500, 200);
 	//bulletManager->InitPosition(world->samus->GetPosX(), world->samus->GetPosY());
 }
 
@@ -61,6 +62,8 @@ Metroid::~Metroid()
 	//delete(bulletManager);
 
 	delete(first_room);
+
+	delete(intro);
 }
 
 void Metroid::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
@@ -103,12 +106,12 @@ void Metroid::Update(float Delta)
 
 void Metroid::UpdateIntro(float Delta)
 {
-	DWORD now = GetTickCount();
-	if (now - Delta  > 1000 / 100)
-	{
-		intro->Next();
-		Delta = now;
-	}
+	//DWORD now = GetTickCount();
+	//if (now - Delta  > 1000 / 100)
+	//{
+	//	intro->Next();
+	//	Delta = now;
+	//}
 }
 
 void Metroid::UpdateFrame(float Delta)
@@ -152,11 +155,19 @@ void Metroid::RenderStartScreen(LPDIRECT3DDEVICE9 d3ddv)
 
 void Metroid::RenderIntro(LPDIRECT3DDEVICE9 d3ddv)
 {
-	Camera::currentCamX = -310;
-	Camera::currentCamY = 250;
-	spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-	intro->Render(0, 0);
-	spriteHandler->End();
+	//Camera::currentCamX = -310;
+	//Camera::currentCamY = 250;
+	//spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+	//intro->Render(0, 0);
+	//spriteHandler->End();
+	// Background
+	d3ddv->StretchRect(
+		introscreen,		// from 
+		NULL,				// which portion?
+		_BackBuffer,		// to 
+		NULL,				// which portion?
+		D3DTEXF_NONE);
+	introscreen = CreateSurfaceFromFile(_d3ddv, INTROSCREEN_FILE);
 }
 
 void Metroid::RenderFrame(LPDIRECT3DDEVICE9 d3ddv)

@@ -30,10 +30,6 @@ Bedgehog::~Bedgehog()
 	delete(bottom);
 	delete(left);
 	delete(right);
-	delete(up_pink);
-	delete(bottom_pink);
-	delete(left_pink);
-	delete(right_pink);
 }
 
 
@@ -127,18 +123,6 @@ void Bedgehog::Update(int t)
 		case ON_BEDGEHOG_RIGHT:
 			right->Next();
 			break;
-		case ON_BEDGEHOG_PINK_UP:
-			up_pink->Next();
-			break;
-		case ON_BEDGEHOG_PINK_BOTTOM:
-			bottom_pink->Next();
-			break;
-		case ON_BEDGEHOG_PINK_LEFT:
-			left_pink->Next();
-			break;
-		case ON_BEDGEHOG_PINK_RIGHT:
-			right_pink->Next();
-			break;
 		}
 		last_time = now;
 	}
@@ -168,18 +152,6 @@ void Bedgehog::Render()
 		break;
 	case ON_BEDGEHOG_RIGHT:
 		right->Render(pos_x, pos_y);
-		break;
-	case ON_BEDGEHOG_PINK_UP:
-		up_pink->Render(pos_x, pos_y);
-		break;
-	case ON_BEDGEHOG_PINK_BOTTOM:
-		bottom_pink->Render(pos_x, pos_y);
-		break;
-	case ON_BEDGEHOG_PINK_LEFT:
-		left_pink->Render(pos_x, pos_y);
-		break;
-	case ON_BEDGEHOG_PINK_RIGHT:
-		right_pink->Render(pos_x, pos_y);
 		break;
 	}
 	spriteHandler->End();
