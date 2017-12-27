@@ -263,11 +263,21 @@ enum SENTRY_TYPE
 #define SENTRY_LEFT_PATH "sprites\\bosses\\SENTRY_LEFT.txt"
 #define SENTRY_TOP_LEFT_PATH "sprites\\bosses\\SENTRY_TOP_LEFT.txt"
 
-//================= BULLET =================
+//================= SENTRY BULLET =================
 #define SENTRY_BULLET_WIDTH 16
 #define SENTRY_BULLET_HEIGHT 16
 #define SENTRY_SPRITE_COUNT 1
-//================= END BULLET =============
+
+#define SENTRY_BULLET_TOP_PATH "sprites\\bosses\\SENTRY_BULLET_TOP.txt"
+#define SENTRY_BULLET_TOP_RIGHT_PATH "sprites\\bosses\\SENTRY_BULLET_TOP_RIGHT.txt"
+#define SENTRY_BULLET_RIGHT_PATH "sprites\\bosses\\SENTRY_BULLET_RIGHT.txt"
+#define SENTRY_BULLET_BOTTOM_RIGHT_PATH "sprites\\bosses\\SENTRY_BULLET_BOTTOM_RIGHT.txt"
+#define SENTRY_BULLET_BOTTOM_PATH "sprites\\bosses\\SENTRY_BULLET_BOTTOM.txt"
+#define SENTRY_BULLET_BOTTOM_LEFT_PATH "sprites\\bosses\\SENTRY_BULLET_BOTTOM_LEFT.txt"
+#define SENTRY_BULLET_LEFT_PATH "sprites\\bosses\\SENTRY_BULLET_LEFT.txt"
+#define SENTRY_BULLET_TOP_LEFT_PATH "sprites\\bosses\\SENTRY_BULLET_TOP_LEFT.txt"
+
+//================= END SENTRY BULLET =============
 
 //================= END SENTRY =============
 
