@@ -10,18 +10,19 @@ class BulletManager
 {
 private:
 	World * manager;
-	Bullet ** bullet_list;
+	BulletObject ** bullet_list;
 	int pos_x_holder;
 	int pos_y_holder;
 	int _Index;
 	DWORD now_shoot;
 	DWORD start_shoot;
 	DWORD tick_per_frame;
+	int frame_rate;
 	
 public:
-	BulletManager();
-	BulletManager(World * manager);
-	BulletManager(int posX, int posY);
+	//BulletManager();
+	BulletManager(World * manager, BULLET_TYPE bullet_type);
+	//BulletManager(int posX, int posY);
 	~BulletManager();
 	void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
 	void InitPosition(int posX, int posY);

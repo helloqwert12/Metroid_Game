@@ -31,6 +31,7 @@ class Block;
 //================== SAMUS ===================
 #define SHOOTING_SPEED 15
 #define SAMUS_SPEED 0.25f
+//#define SAMUS_SPEED 0.05f
 
 #define SAMUS_SPRITES_PATH L"sprites\\samus\\samus_sprites.png"
 
@@ -143,9 +144,12 @@ class Block;
 #define BIRD_WIDTH 36
 #define BIRD_HEIGHT 52
 
-#define BIRD_FLY_SPRITE_COUNT 3
+#define BIRD_FLY_SPRITE_COUNT 2
 
 #define BIRD_FLY "sprites\\enemy\\BIRD_FLY.txt"
+
+#define BIRD_STANDARD_ANIMATE_RATE 7
+#define BIRD_BOOST_ANIMATE_RATE 20
 //================== END BIRD =================
 
 //================== BLOCK =====================
@@ -174,6 +178,14 @@ enum BRICK_TYPE
 	BLUE = 1
 };
 //================ END BRICK ==================
+
+//================ BULLET TYPE ================
+enum BULLET_TYPE
+{
+	STANDARD,
+	MISSILE
+};
+//================ END BULLET TYPE ============
 
 
 //================ SAMUS BULLET ===============

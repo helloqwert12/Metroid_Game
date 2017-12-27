@@ -42,6 +42,7 @@ private:
 	DWORD now_shoot;
 
 	void _Shoot(BULLET_DIRECTION dir);
+	void _ShootMissile(BULLET_DIRECTION dir);
 
 public:
 	Metroid(HINSTANCE hInstance, LPWSTR Name, int Mode, int IsFullScreen, int FrameRate);

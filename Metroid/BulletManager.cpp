@@ -1,40 +1,57 @@
-#include "BulletManager.h"
+﻿#include "BulletManager.h"
 #include "World.h"
 #include "Metroid.h"
 #include "Bullet.h"
-BulletManager::BulletManager()
-{
-	//Create instance bullet_list
-	bullet_list = new Bullet*[BULLET_COUNT];
-	for (int i = 0; i < BULLET_COUNT; i++)
-	{
-		bullet_list[i] = new Bullet(manager);
-	}
-	_Index = 0;
-	this->start_shoot = 0;
-	this->tick_per_frame = manager->metroid->GetTickPerFrame();
-}
+//BulletManager::BulletManager()
+//{
+//	//Create instance bullet_list
+//	bullet_list = new BulletObject*[BULLET_COUNT];
+//	for (int i = 0; i < BULLET_COUNT; i++)
+//	{
+//		bullet_list[i] = new Missile(manager);
+//	}
+//	_Index = 0;
+//	this->start_shoot = 0;
+//	//this->tick_per_frame = manager->metroid->GetTickPerFrame();
+//	this->frame_rate = manager->metroid->FrameRate;
+//	this->tick_per_frame = 1000 / 80;
+//}
 
-BulletManager::BulletManager(World * manager)
+BulletManager::BulletManager(World * manager, BULLET_TYPE bullet_type)
 {
 	this->manager = manager;
 	//Create instance bullet_list
-	bullet_list = new Bullet*[BULLET_COUNT];
-	for (int i = 0; i < BULLET_COUNT; i++)
+	bullet_list = new BulletObject*[BULLET_COUNT];
+	switch (bullet_type)
 	{
-		bullet_list[i] = new Bullet(manager);
+	case STANDARD:
+		for (int i = 0; i < BULLET_COUNT; i++)
+		{
+			bullet_list[i] = new Bullet(manager);
+		}
+		break;
+	case MISSILE:
+		for (int i = 0; i < BULLET_COUNT; i++)
+		{
+			bullet_list[i] = new Missile(manager);
+		}
+		break;
+	// ...
 	}
+	
 	_Index = 0;
 	this->start_shoot = 0;
-	this->tick_per_frame = manager->metroid->GetTickPerFrame();
+	//this->tick_per_frame = manager->metroid->GetTickPerFrame();
+	this->frame_rate = manager->metroid->FrameRate;
+	this->tick_per_frame = 1000 / 80;
 }
 
-BulletManager::BulletManager(int posX, int posY)
-{
-	BulletManager();
-	this->pos_x_holder = posX;
-	this->pos_y_holder = posY;
-}
+//BulletManager::BulletManager(int posX, int posY)
+//{
+//	BulletManager();
+//	this->pos_x_holder = posX;
+//	this->pos_y_holder = posY;
+//}
 
 
 BulletManager::~BulletManager()
@@ -97,6 +114,7 @@ void BulletManager::Render()
 	}
 }
 
+// Cái này chưa dùng được bị sai
 void BulletManager::Shoot(BULLET_DIRECTION dir)
 {
 	now_shoot = GetTickCount();
@@ -105,7 +123,7 @@ void BulletManager::Shoot(BULLET_DIRECTION dir)
 		start_shoot = GetTickCount();
 		this->Next(dir);
 	}
-	else if ((now_shoot - start_shoot) > SHOOTING_SPEED * manager->metroid->GetTickPerFrame());
+	else if ((now_shoot - start_shoot) > 1000);
 	{
 		//Reset start_shoot
 		start_shoot = 0;

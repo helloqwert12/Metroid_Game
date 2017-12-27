@@ -17,9 +17,12 @@ Bird::Bird(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type) :
 	width = BLOCK_WIDTH;
 	height = BLOCK_HEIGHT;
 
+	//Set animate rate ban đầu
+	animate_rate = BIRD_STANDARD_ANIMATE_RATE;
+
 	//--TO DO: Khởi tạo collider cho Block (Khang)
 	collider = new Collider();
-	collider->SetCollider(0, 0, -BLOCK_HEIGHT, BLOCK_WIDTH);
+	collider->SetCollider(0, 0, -BLOCK_HEIGHT - 10, BLOCK_WIDTH);
 
 	// collider dùng khi samus đi vào vùng va chạm
 	collider_area = new Collider();
@@ -62,15 +65,15 @@ void Bird::Update(int t)
 	if (this->IsCollide(manager->samus) == true)
 	{
 		vy = -0.1f;
-		//vx = -0.05f;	
-	}
-	if (pos_x < manager->samus->GetPosX())
-	{
-		vx = 0.02f;
-	}
-	else
-	{
-		vx = -0.02f;
+		animate_rate = BIRD_BOOST_ANIMATE_RATE;
+		if (pos_x < manager->samus->GetPosX())
+		{
+			vx = 0.05f;
+		}
+		else
+		{
+			vx = -0.05f;
+		}
 	}
 
 	for (int i = 0; i < manager->quadtreeGroup->size; i++)
@@ -98,7 +101,7 @@ void Bird::Update(int t)
 	pos_y += vy * t;
 
 	DWORD now = GetTickCount();
-	if (now - last_time > 1000 / ANIMATE_RATE)
+	if (now - last_time > 1000 / animate_rate)
 	{
 		switch (state)
 		{
@@ -155,5 +158,5 @@ void Bird::Response(GameObject * target, const float & DeltaTime, const float & 
 
 void Bird::Destroy()
 {
-
+	vx = 0;
 }

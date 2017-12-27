@@ -59,6 +59,10 @@ void BulletObject::SetDirection(BULLET_DIRECTION value)
 	direction = value;
 }
 
+void BulletObject::InitSprites(LPDIRECT3DDEVICE9 d3ddv)
+{
+}
+
 void BulletObject::Update(int t, int posX, int posY)
 {
 	// Xử lý va chạm

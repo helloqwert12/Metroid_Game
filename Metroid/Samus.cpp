@@ -294,7 +294,7 @@ void Samus::Update(int t)
 
 	vy -= gravity;
 
-	std::vector<GameObject*> list = manager->enemyGroup->GetListGO();
+	/*std::vector<GameObject*> list = manager->enemyGroup->GetListGO();
 	for (int i = 0; i < list.size(); i++)
 	{	
 		float timeScale = SweptAABB(list[i], t);
@@ -302,7 +302,7 @@ void Samus::Update(int t)
 		{
 			this->SlideFromGround(list[i], t, timeScale);
 		}
-	}
+	}*/
 	
 	for (int i = 0; i < manager->quadtreeGroup->size; i++)
 	{
@@ -313,6 +313,7 @@ void Samus::Update(int t)
 			if (timeScale < 1.0f)
 			{
 				SlideFromGround(manager->quadtreeGroup->objects[i], t, timeScale);
+				//Response(manager->quadtreeGroup->objects[i], t, timeScale);
 			}
 			break;
 		}

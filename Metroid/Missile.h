@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "Sprite.h"
 #include "Parameters.h"
+#include "BulletObject.h"
 
 #define MISSILE_SPRITE_PATH L"sprites\\bullet\\missile.png"
 #define MISSILE_UP_SPRITE "sprites\\bullet\\MISSILE_UP.txt"
@@ -24,25 +25,16 @@
 #define LIMIT_DISTANCE 200
 
 
-class Missile : public GameObject
+class Missile : public BulletObject
 {
 private:
-	int pos_x_holder;
-	int pos_y_holder;
-
-	int limit_dist_x;		//limit distance of x
-	int limit_dist_y;		//limit distance of y;
-
-	World * manager;
-
-	LPD3DXSPRITE _SpriteHandler;
-	BULLET_DIRECTION direction;
+	
 	Sprite * missile_up;
 	Sprite * missile_left;
 	Sprite * missile_right;
 
 public:
-	
+
 	Missile(World * manager);
 	Missile(World * manager, int x_holder, int y_holder);
 	~Missile();
@@ -50,8 +42,6 @@ public:
 	void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
 	
 	void Render();
-
-	void Shoot(BULLET_DIRECTION dir);
 };
 
 #endif // !_BULLET_H

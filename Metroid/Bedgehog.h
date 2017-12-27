@@ -22,12 +22,17 @@ protected:
 	Sprite * left;
 	Sprite * right;
 
+	bool isCollision;
+	float last_normalx;
+	float last_normaly;
+
 public:
 	Bedgehog();
 	Bedgehog(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type);
 	~Bedgehog();
 
 	void InitSprites();
+	void ResponseGround(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
 	//============== OVERRIDE VIRTUAL METHOD ===================
 	virtual void Update(int t);
 	virtual void Render();
