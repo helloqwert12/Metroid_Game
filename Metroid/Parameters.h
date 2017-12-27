@@ -235,9 +235,60 @@ enum ENEMY_TYPE
 };
 //================= END ENEMY TYPE =============
 
+//================= EFFECT TYPE =============
 #define EXPLOSION_SPRITE_PATH L"sprites\\enemy\\explosion.png"
 
 #define EXPLOSION_WIDTH 64
 #define EXPLOSION_HEIGHT 64
 
 #define EXPLOSION_SPRITE_COUNT 3
+//================= END ENEMY TYPE =============
+
+//================= BOSSES =================
+#define BOSS_SPRITE_PATH L"sprites\\bosses\\NES - Metroid - Bosses.png"
+
+//================= MOTHER_BRAIN =================
+#define MOTHER_BRAIN_WIDTH 160
+#define MOTHER_BRAIN_HEIGHT 128
+#define MOTHER_BRAIN_SPRITE_COUNT 8
+
+#define MOTHER_BRAIN_HIT_WIDTH 96
+#define MOTHER_BRAIN_HIT_HEIGHT 128
+#define MOTHER_BRAIN_HIT_SPRITE_COUNT 2
+
+//================= SENTRY =================
+//================= SENTRY TYPE =================
+enum SENTRY_TYPE
+{
+	SENTRY_LEFT,
+	SENTRY_TOP,
+	SENTRY_RIGHT
+};
+//================= END SENTRY TYPE =============
+
+#define SENTRY_WIDTH 42
+#define SENTRY_HEIGHT 42
+#define SENTRY_SPRITE_COUNT 1
+
+#define SENTRY_TOP_PATH "sprites\\bosses\\SENTRY_TOP.txt"
+#define SENTRY_TOP_RIGHT_PATH "sprites\\bosses\\SENTRY_TOP_RIGHT.txt"
+#define SENTRY_RIGHT_PATH "sprites\\bosses\\SENTRY_RIGHT.txt"
+#define SENTRY_BOTTOM_RIGHT_PATH "sprites\\bosses\\SENTRY_BOTTOM_RIGHT.txt"
+#define SENTRY_BOTTOM_PATH "sprites\\bosses\\SENTRY_BOTTOM.txt"
+#define SENTRY_BOTTOM_LEFT_PATH "sprites\\bosses\\SENTRY_BOTTOM_LEFT.txt"
+#define SENTRY_LEFT_PATH "sprites\\bosses\\SENTRY_LEFT.txt"
+#define SENTRY_TOP_LEFT_PATH "sprites\\bosses\\SENTRY_TOP_LEFT.txt"
+
+//================= BULLET =================
+#define SENTRY_BULLET_WIDTH 16
+#define SENTRY_BULLET_HEIGHT 16
+#define SENTRY_SPRITE_COUNT 1
+//================= END BULLET =============
+
+//================= END SENTRY =============
+
+//================= END MOTHER_BRAIN =============
+
+
+
+//================= END BOSSES =============

@@ -8,6 +8,7 @@
 #include "Bedgehog.h"
 #include "Block.h"
 #include "Bird.h"
+#include "Sentry.h"
 /*
 	Class này chứa tất cả những thứ trong Game
 	Các class khác chứa con trỏ đến class này để thao tác với các đối tượng trong class này
@@ -30,6 +31,8 @@ public:
 	Bedgehog * hog_pink;
 	Bird * bird;
 	Block * block;
+
+	Sentry * sentry;
 
 	BulletManager * bullets;
 	BulletManager * missiles;

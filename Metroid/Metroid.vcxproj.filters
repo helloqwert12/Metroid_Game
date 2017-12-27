@@ -177,6 +177,12 @@
     <ClCompile Include="SentryBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bird.cpp">
+      <Filter>Source Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sentry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h">
@@ -279,6 +285,12 @@
       <Filter>Header Files\Projectile</Filter>
     </ClInclude>
     <ClInclude Include="SentryBullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bird.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sentry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
