@@ -2,20 +2,7 @@
 #include "World.h"
 #include "Metroid.h"
 #include "Bullet.h"
-//BulletManager::BulletManager()
-//{
-//	//Create instance bullet_list
-//	bullet_list = new BulletObject*[BULLET_COUNT];
-//	for (int i = 0; i < BULLET_COUNT; i++)
-//	{
-//		bullet_list[i] = new Missile(manager);
-//	}
-//	_Index = 0;
-//	this->start_shoot = 0;
-//	//this->tick_per_frame = manager->metroid->GetTickPerFrame();
-//	this->frame_rate = manager->metroid->FrameRate;
-//	this->tick_per_frame = 1000 / 80;
-//}
+#include "SentryBullet.h"
 
 BulletManager::BulletManager(World * manager, BULLET_TYPE bullet_type)
 {
@@ -36,6 +23,11 @@ BulletManager::BulletManager(World * manager, BULLET_TYPE bullet_type)
 			bullet_list[i] = new Missile(manager);
 		}
 		break;
+	case SENTRY:
+		for (int i = 0; i < BULLET_COUNT; i++)
+		{
+			bullet_list[i] = new SentryBullet(manager);
+		}
 	// ...
 	}
 	
@@ -88,20 +80,23 @@ void BulletManager::ResetAll()
 	}
 }
 
-void BulletManager::Next(BULLET_DIRECTION dir)
+//void BulletManager::Next(BULLET_DIRECTION dir)
+//{
+//	bullet_list[_Index]->Shoot(dir);
+//	_Index = (_Index + BULLET_COUNT - 1) % BULLET_COUNT;
+//}
+
+void BulletManager::Next(BULLET_DIRECTION dir, float posX, float posY)
 {
-	bullet_list[_Index]->Shoot(dir);
+	bullet_list[_Index]->Shoot(dir, posX, posY);
 	_Index = (_Index + BULLET_COUNT - 1) % BULLET_COUNT;
 }
 
-void BulletManager::Update(int t, int posX, int posY)
+void BulletManager::Update(int t)
 {
-	pos_x_holder = posX;
-	pos_y_holder = posY;
-
 	for (int i = 0; i < BULLET_COUNT; i++)
 	{
-		bullet_list[i]->Update(t, posX, posY);
+		bullet_list[i]->Update(t);
 	}
 
 }
@@ -115,17 +110,18 @@ void BulletManager::Render()
 }
 
 // Cái này chưa dùng được bị sai
-void BulletManager::Shoot(BULLET_DIRECTION dir)
-{
-	now_shoot = GetTickCount();
-	if (start_shoot <= 0) //if shooting is active
-	{
-		start_shoot = GetTickCount();
-		this->Next(dir);
-	}
-	else if ((now_shoot - start_shoot) > 1000);
-	{
-		//Reset start_shoot
-		start_shoot = 0;
-	}
-}
+//void BulletManager::Shoot(BULLET_DIRECTION dir)
+//{
+//	now_shoot = GetTickCount();
+//	if (start_shoot <= 0) //if shooting is active
+//	{
+//		start_shoot = GetTickCount();
+//		this->Next(dir);
+//	}
+//	else if ((now_shoot - start_shoot) > 1000);
+//	{
+//		//Reset start_shoot
+//		start_shoot = 0;
+//	}
+//}
+

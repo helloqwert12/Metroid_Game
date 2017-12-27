@@ -4,6 +4,8 @@
 #include "utils.h"
 #include "Collision.h"
 #include "BulletManager.h"
+#include "World.h"
+#include "Samus.h"
 DWORD last_time;
 void Metroid::_InitBackground()
 {
@@ -11,12 +13,11 @@ void Metroid::_InitBackground()
 
 void Metroid::_InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 {
-	world->samus->InitSprites(d3ddv);
+	world->InitSprites(d3ddv);
 	//tiles->InitSprites(d3ddv);
 	//intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 640, 156, 1);
 	//tiles->InitSprites(d3ddv);
-	world->bullets->InitSprites(d3ddv);
-	world->missiles->InitSprites(d3ddv);
+	
 }
 
 void Metroid::_InitPositions()
@@ -37,7 +38,7 @@ void Metroid::_Shoot(BULLET_DIRECTION dir)
 	if (start_shoot <= 0) //if shooting is active
 	{
 		start_shoot = GetTickCount();
-		world->bullets->Next(dir);
+		world->bullets->Next(dir, world->samus->GetPosX(), world->samus->GetPosY());
 	}
 	else if ((now_shoot - start_shoot) > SHOOTING_SPEED * tick_per_frame)
 	{
@@ -48,7 +49,7 @@ void Metroid::_Shoot(BULLET_DIRECTION dir)
 
 void Metroid::_ShootMissile(BULLET_DIRECTION dir)
 {
-	world->missiles->Next(dir);
+	world->missiles->Next(dir, world->samus->GetPosX(), world->samus->GetPosY());
 }
 
 Metroid::Metroid(HINSTANCE hInstance, LPWSTR Name, int Mode, int IsFullScreen, int FrameRate):Game(hInstance, Name, Mode, IsFullScreen, FrameRate)

@@ -27,10 +27,12 @@ public:
 	void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
 	void InitPosition(int posX, int posY);
 	void ResetAll();
-	void Next(BULLET_DIRECTION dir);
-	void Update(int t, int posX, int posY);
+	//void Next(BULLET_DIRECTION dir);
+	void Next(BULLET_DIRECTION dir, float posX, float posY);
+	void Update(int t);
 	void Render();
-	void Shoot(BULLET_DIRECTION dir);
+	//void Shoot(BULLET_DIRECTION dir);
+	
 	
 };
 

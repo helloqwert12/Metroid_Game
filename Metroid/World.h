@@ -36,6 +36,7 @@ public:
 
 	BulletManager * bullets;
 	BulletManager * missiles;
+	BulletManager * sentrybullets;
 
 	GroupObject * collisionGroup;	//Group chứa các gameobject có khả năng va chạm với nhau
 	GroupObject * enemyGroup;
@@ -47,6 +48,7 @@ public:
 	//void Init();
 	void Update(float t);
 	void Render();
+	void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
 	//void Destroy();
 
 };

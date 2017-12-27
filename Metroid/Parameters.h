@@ -194,7 +194,8 @@ enum MOTHERBRAIN_STATE
 enum BULLET_TYPE
 {
 	STANDARD,
-	MISSILE
+	MISSILE,
+	SENTRY
 };
 //================ END BULLET TYPE ============
 
@@ -284,27 +285,22 @@ enum SENTRY_TYPE
 #define SENTRY_BULLET_HEIGHT 16
 #define SENTRY_SPRITE_COUNT 1
 
-#define SENTRY_BULLET_TOP_PATH "sprites\\bosses\\SENTRY_BULLET_TOP.txt"
-#define SENTRY_BULLET_TOP_RIGHT_PATH "sprites\\bosses\\SENTRY_BULLET_TOP_RIGHT.txt"
-#define SENTRY_BULLET_RIGHT_PATH "sprites\\bosses\\SENTRY_BULLET_RIGHT.txt"
-#define SENTRY_BULLET_BOTTOM_RIGHT_PATH "sprites\\bosses\\SENTRY_BULLET_BOTTOM_RIGHT.txt"
-#define SENTRY_BULLET_BOTTOM_PATH "sprites\\bosses\\SENTRY_BULLET_BOTTOM.txt"
-#define SENTRY_BULLET_BOTTOM_LEFT_PATH "sprites\\bosses\\SENTRY_BULLET_BOTTOM_LEFT.txt"
-#define SENTRY_BULLET_LEFT_PATH "sprites\\bosses\\SENTRY_BULLET_LEFT.txt"
-#define SENTRY_BULLET_TOP_LEFT_PATH "sprites\\bosses\\SENTRY_BULLET_TOP_LEFT.txt"
-
-//================= END SENTRY BULLET =============
 #define SENTRY_BULLET_SPRITE_COUNT 1
 #define SENTRY_BULLET_SPIRTE_PATH L"sprites\\bosses\\boss_sprtesheet.png"
 
-#define SENTRY_BULLET_UP ""
-#define SENTRY_BULLET_LEFT ""
-#define SENTRY_BULLET_RIGHT ""
-#define SENTRY_BULLET_BOTTOM ""
-#define SENTRY_BULLET_TOPLEFT ""
-#define SENTRY_BULLET_TOPRIGHT ""
-#define SENTRY_BULLET_BOTTOMLEFT ""
-#define SENTRY_BULLET_BOTTOMRIGHT ""
+#define SENTRY_BULLET_UP "sprites\\bosses\\SENTRY_BULLET_TOP.txt"
+#define SENTRY_BULLET_TOPRIGHT "sprites\\bosses\\SENTRY_BULLET_TOP_RIGHT.txt"
+#define SENTRY_BULLET_RIGHT "sprites\\bosses\\SENTRY_BULLET_RIGHT.txt"
+#define SENTRY_BULLET_BOTTOMRIGHT "sprites\\bosses\\SENTRY_BULLET_BOTTOM_RIGHT.txt"
+#define SENTRY_BULLET_BOTTOM "sprites\\bosses\\SENTRY_BULLET_BOTTOM.txt"
+#define SENTRY_BULLET_BOTTOMLEFT "sprites\\bosses\\SENTRY_BULLET_BOTTOM_LEFT.txt"
+#define SENTRY_BULLET_LEFT "sprites\\bosses\\SENTRY_BULLET_LEFT.txt"
+#define SENTRY_BULLET_TOPLEFT "sprites\\bosses\\SENTRY_BULLET_TOP_LEFT.txt"
+
+//================= END SENTRY BULLET =============
+
+
+
 //================= END BULLET =============
 
 //================= END SENTRY =============
