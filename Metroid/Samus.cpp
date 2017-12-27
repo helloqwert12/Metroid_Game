@@ -294,11 +294,15 @@ void Samus::Update(int t)
 
 	vy -= gravity;
 
-	/*std::vector<GameObject*> list = manager->enemyGroup->GetListGO();
+	std::vector<GameObject*> list = manager->enemyGroup->GetListGO();
 	for (int i = 0; i < list.size(); i++)
-	{
-		this->Response(list[i], t);
-	}*/
+	{	
+		float timeScale = SweptAABB(list[i], t);
+		if (timeScale < 1.0f)
+		{
+			this->SlideFromGround(list[i], t, timeScale);
+		}
+	}
 	
 	for (int i = 0; i < manager->quadtreeGroup->size; i++)
 	{
@@ -312,9 +316,6 @@ void Samus::Update(int t)
 			}
 			break;
 		}
-
-		//this->Response(list2[i], t);
-
 	}
 	
 	pos_x += vx*t;
@@ -430,35 +431,43 @@ void Samus::Update(int t)
 
 }
 
-void Samus::Response(GameObject *target, const float &DeltaTime)
+void Samus::Response(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale)
 {
-	/*pos_x += vx * (CollisionTime * DeltaTime);
-	pos_y += vy * (CollisionTime * DeltaTime);*/
-	float vectorx = this->normalx;
-	float vectory = this->normaly;
-	float scale = SweptAABB(target, DeltaTime);
-	if (scale < 1.0f)
+	// rồi mới bật ra
+	if (normalx > 0.1f)	// tông bên phải
 	{
-		pos_x = lastPosX + vx*vectorx*scale*DeltaTime;
-		pos_y = lastPosY + vy*vectory*scale*DeltaTime;
+		if (vx < -0.0f)// đang chạy qua trái => văng ngược lại
+			vx *= -1;
+	}
+	else if (normalx < -0.1f) // tông bên trái
+	{
+		if (vx > 0.0f)//	đang chạy qua phải => văng ngược lại
+			vx *= -1;
+	}
 
-		if (vectory < 0)
+	if (normaly > 0.1f) // tông phía trên
+	{
+		if (vy < -0.0f)// đang rơi xuống => văng lên trên
+			vy = 0.0f;
+		if (state == ON_JUMP_LEFT || state == ON_JUMPING_SHOOTING_LEFT || state == ON_SOMERSAULT_LEFT || state == ON_JUMP_AIM_UP_LEFT)
 		{
-			SetVelocityY(0.0f);
-			if (vectorx > 0)
-			{
-				this->state = SAMUS_STATE::RIGHTING;
-			}
-			else if (vectorx < 0)
-			{
-				this->state = SAMUS_STATE::LEFTING;
-			}
+			state = IDLE_LEFT;
+		}
+		else if (state == ON_JUMP_RIGHT || state == ON_JUMPING_SHOOTING_RIGHT || state == ON_SOMERSAULT_RIGHT || state == ON_JUMP_AIM_UP_RIGHT)
+		{
+			state = IDLE_RIGHT;
 		}
 	}
-	else
+	else if (normaly < -0.1f) // tông phía dưới
 	{
-		lastPosX = this->GetPosX();
-		lastPosY = this->GetPosY();
+		if (vy > 0.0f)// đang bay lên => văng xuống
+			vy *= -1;
+	}
+
+	if (normaly != 0)
+	{
+		pos_x += vx * (CollisionTimeScale)* DeltaTime;
+		pos_y += vy * (CollisionTimeScale)* DeltaTime;
 	}
 }
 

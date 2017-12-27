@@ -17,6 +17,7 @@ protected:
 
 	Sprite * fly;
 
+	Collider * collider_area;
 public:
 	Bird();
 	Bird(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type);
@@ -27,6 +28,10 @@ public:
 	virtual void Update(int t);
 	virtual void Render();
 	//============== END OVERRIDE VIRTUAL METHOD ===============
+	bool IsCollide(GameObject* target);
+	void Response(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
+
+	void Destroy();
 };
 
 #endif // !_Block_H_
