@@ -63,8 +63,11 @@ void BulletObject::InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 {
 }
 
-void BulletObject::Update(int t)
+void BulletObject::Update(float t)
 {
+	if (!isActive)
+		return;
+
 	// Xử lý va chạm
 	for (int i = 0; i < manager->quadtreeGroup->size; i++)
 	{
@@ -148,6 +151,7 @@ void BulletObject::Shoot(BULLET_DIRECTION dir)
 void BulletObject::Shoot(BULLET_DIRECTION dir, float posX, float posY)
 {
 	direction = dir;	//cái này xem như set active
+	isActive = true;
 	pos_x = posX;
 	pos_y = posY;
 }

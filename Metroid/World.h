@@ -40,6 +40,7 @@ public:
 	BulletManager * bullets;
 	BulletManager * missiles;
 	BulletManager * sentrybullets;
+	BulletManager * birdbullets;
 
 	GroupObject * collisionGroup;	//Group chứa các gameobject có khả năng va chạm với nhau
 	GroupObject * enemyGroup;

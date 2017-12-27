@@ -13,6 +13,97 @@ void Bullet::Render()
 	}
 }
 
+void Bullet::Update(float t)
+{
+	// Xử lý va chạm
+	for (int i = 0; i < manager->quadtreeGroup->size; i++)
+	{
+		switch (manager->quadtreeGroup->objects[i]->GetType())
+		{
+		case BRICK:
+			float timeScale = SweptAABB(manager->quadtreeGroup->objects[i], t);
+			if (timeScale < 1.0f)
+			{
+				Reset();
+			}
+			break;
+		}
+	}
+
+	//
+	// Update bullet status
+	//
+	switch (direction)
+	{
+	case ON_LEFT:
+		isActive = true;
+		vx = -SPEED;
+		vy = 0;
+		break;
+	case ON_RIGHT:
+		isActive = true;
+		vx = SPEED;
+		vy = 0;
+		break;
+	case ON_UP:
+		isActive = true;
+		vy = SPEED;
+		vx = 0;
+		break;
+	case ON_BOTTOM:
+		isActive = true;
+		vy = -SPEED;
+		vx = 0;
+		break;
+	case ON_TOPLEFT:
+		isActive = true;
+		vy = SPEED;
+		vx = -SPEED;
+		break;
+	case ON_TOPRIGHT:
+		isActive = true;
+		vy = SPEED;
+		vx = SPEED;
+		break;
+	case ON_BOTTOMLEFT:
+		isActive = true;
+		vy = -SPEED;
+		vx = -SPEED;
+		break;
+	case ON_BOTTOMRIGHT:
+		isActive = true;
+		vy = -SPEED;
+		vx = SPEED;
+		break;
+	case NONE:
+		isActive = false;
+		vx = 0;
+		vy = 0;
+		break;
+	}
+
+	pos_x += vx*t;
+	pos_y += vy*t;
+
+	int temp_x = vx*t;
+	int temp_y = vy*t;
+
+	if (temp_x < 0)
+		temp_x = -temp_x;
+	if (temp_y < 0)
+		temp_y = -temp_y;
+
+	limit_dist_x += temp_x;
+	limit_dist_y += temp_y;
+
+
+	//Check if the bullet reach the limit
+	if (limit_dist_x >= LIMIT_DISTANCE || limit_dist_y >= LIMIT_DISTANCE)
+	{
+		Reset();
+	}
+}
+
 Bullet::Bullet(World * manager)
 {
 	bullet = NULL;

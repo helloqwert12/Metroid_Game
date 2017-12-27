@@ -153,6 +153,9 @@
     <ClCompile Include="dxutil.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Missile.cpp">
       <Filter>Source Files\Projectile</Filter>
     </ClCompile>
@@ -182,6 +185,8 @@
     </ClCompile>
     <ClCompile Include="PositionManager.cpp">
       <Filter>Source Files\Manager</Filter>
+    <ClCompile Include="BirdBullet.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Gate.cpp">
       <Filter>Source Files\GameObject</Filter>
@@ -298,6 +303,9 @@
     </ClInclude>
     <ClInclude Include="Gate.h">
       <Filter>Header Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="BirdBullet.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

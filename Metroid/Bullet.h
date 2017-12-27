@@ -6,17 +6,6 @@
 #include "Sprite.h"
 #include "Parameters.h"
 
-#define BULLET_SPRITE_PATH L"sprites\\bullet\\bullet.png"
-#define BULLET_SPRITE "sprites\\bullet\\BULLET.txt"
-#define BULLET_WIDTH 12
-#define BULLET_HEIGHT 14
-#define BULLET_COUNT 1
-#define SPRITE_PER_ROW 1
-
-#define SPEED 0.6f
-#define LIMIT_DISTANCE 150
-
-
 
 class Bullet : public BulletObject
 {
@@ -31,6 +20,7 @@ public:
 
 	void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
 	void Render();
+	void Update(float t);
 	
 };
 
