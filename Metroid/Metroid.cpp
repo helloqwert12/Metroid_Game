@@ -550,6 +550,7 @@ void Metroid::OnKeyDown(int KeyCode)
 				break;
 
 			case DIK_C:
+				Game::gameSound->playSound(SHOOT_MISSILE);
 				if (world->samus->GetState() == IDLING_AIM_UP_LEFT)
 				{
 					world->samus->SetState(IDLING_SHOOTING_UP_LEFT);
