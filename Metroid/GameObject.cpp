@@ -235,7 +235,7 @@ bool GameObject::IsCollide(GameObject* target)
 	if (pos_x + collider->GetRight() < target->GetPosX())
 		return false;
 	// Kiểm tra phía trên
-	if (pos_y + collider->GetBottom() > target->GetPosY());
+	if (pos_y + collider->GetBottom() > target->GetPosY())
 		return false;
 	// Kiểm tra bên phải
 	if (pos_x > target->GetPosX() + target->GetCollider()->GetRight())

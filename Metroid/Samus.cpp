@@ -300,7 +300,7 @@ void Samus::Update(int t)
 		float timeScale = SweptAABB(list[i], t);
 		if (timeScale < 1.0f)
 		{
-			this->Response(list[i], t, timeScale);
+			this->SlideFromGround(list[i], t, timeScale);
 		}
 	}*/
 	

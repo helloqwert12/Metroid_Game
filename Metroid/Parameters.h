@@ -207,3 +207,10 @@ enum ENEMY_TYPE
 	BLOCK
 };
 //================= END ENEMY TYPE =============
+
+#define EXPLOSION_SPRITE_PATH L"sprites\\enemy\\explosion.png"
+
+#define EXPLOSION_WIDTH 64
+#define EXPLOSION_HEIGHT 64
+
+#define EXPLOSION_SPRITE_COUNT 3
