@@ -67,6 +67,12 @@
     <Filter Include="Source Files\GameObject">
       <UniqueIdentifier>{f5848d9a-58fc-4ece-8f34-62c9426fdc94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Boss">
+      <UniqueIdentifier>{c26384b2-0533-40b5-8c22-f676b5e489da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Boss">
+      <UniqueIdentifier>{f8a1bf6f-1ff8-4e86-9435-abaac736afdd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -159,11 +165,17 @@
     <ClCompile Include="Block.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="BulletObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Bird.cpp">
       <Filter>Source Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="MotherBrain.cpp">
+      <Filter>Source Files\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletObject.cpp">
+      <Filter>Source Files\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="SentryBullet.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -257,11 +269,17 @@
     <ClInclude Include="Block.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="BulletObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Bird.h">
       <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="MotherBrain.h">
+      <Filter>Header Files\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletObject.h">
+      <Filter>Header Files\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="SentryBullet.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
