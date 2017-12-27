@@ -31,6 +31,7 @@ class Block;
 //================== SAMUS ===================
 #define SHOOTING_SPEED 15
 #define SAMUS_SPEED 0.25f
+//#define SAMUS_SPEED 0.05f
 
 #define SAMUS_SPRITES_PATH L"sprites\\samus\\samus_sprites.png"
 
