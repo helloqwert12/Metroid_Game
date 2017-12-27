@@ -21,7 +21,7 @@ void Metroid::_InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 void Metroid::_InitPositions()
 {
 	world->samus->InitPostition();
-	world->hog_yellow->InitPostition(1500, 130);
+	world->hog_yellow->InitPostition(1350, 420);
 	world->hog_pink->InitPostition(1800, 110);
 	world->bird->InitPostition(1500, 410);
 	world->block->InitPostition(1600,100);

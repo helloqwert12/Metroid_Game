@@ -144,7 +144,7 @@ class Block;
 #define BIRD_WIDTH 36
 #define BIRD_HEIGHT 52
 
-#define BIRD_FLY_SPRITE_COUNT 3
+#define BIRD_FLY_SPRITE_COUNT 2
 
 #define BIRD_FLY "sprites\\enemy\\BIRD_FLY.txt"
 //================== END BIRD =================

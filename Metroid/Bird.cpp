@@ -62,15 +62,14 @@ void Bird::Update(int t)
 	if (this->IsCollide(manager->samus) == true)
 	{
 		vy = -0.1f;
-		//vx = -0.05f;	
-	}
-	if (pos_x < manager->samus->GetPosX())
-	{
-		vx = 0.02f;
-	}
-	else
-	{
-		vx = -0.02f;
+		if (pos_x < manager->samus->GetPosX())
+		{
+			vx = 0.05f;
+		}
+		else
+		{
+			vx = -0.05f;
+		}
 	}
 
 	for (int i = 0; i < manager->quadtreeGroup->size; i++)
@@ -155,5 +154,5 @@ void Bird::Response(GameObject * target, const float & DeltaTime, const float & 
 
 void Bird::Destroy()
 {
-
+	vx = 0;
 }

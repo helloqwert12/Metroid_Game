@@ -20,7 +20,7 @@ Bedgehog::Bedgehog(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy
 
 	//Set vận tốc
 	gravity = FALLDOWN_VELOCITY_DECREASE;
-	vx = BEDGEHOG_SPEED;
+	vx = -BEDGEHOG_SPEED;
 	vy = 0;
 }
 
@@ -221,29 +221,29 @@ void Bedgehog::ResponseGround(GameObject *target, const float &DeltaTime, const 
 		this->pos_x = (target->GetPosX() + target->GetCollider()->GetRight() - this->collider->GetLeft()) + 0.1f;
 		pos_x -= vx*DeltaTime;
 
-		gravity = 0;
-		vx = 0;
-		vy = -0.05f;
+		//gravity = 0;
+		//vx = 0;
+		//vy = -0.05f;
 
-		state = ON_BEDGEHOG_RIGHT;
+		//state = ON_BEDGEHOG_RIGHT;
 
-		last_normalx = normalx;
+		//last_normalx = normalx;
 	}
 
 	else if (normalx < -0.1f)// tông bên trái gạch
 	{
 		this->pos_x = (target->GetPosX() + target->GetCollider()->GetLeft() - this->collider->GetRight()) - 0.1f;
 		pos_x -= vx*DeltaTime;
-		pos_y += 0.1f;
-		
-		//Test 
-		gravity = 0;
-		vx = 0;
-		vy = 0.05f;
+		//pos_y += 0.1f;
+		//
+		////Test 
+		//gravity = 0;
+		//vx = 0;
+		//vy = 0.05f;
 
-		state = ON_BEDGEHOG_LEFT;
+		//state = ON_BEDGEHOG_LEFT;
 
-		last_normalx = normalx;
+		//last_normalx = normalx;
 	}
 
 	if (normaly > 0.1f) // trên xuống (không vào normaly được)
@@ -252,24 +252,24 @@ void Bedgehog::ResponseGround(GameObject *target, const float &DeltaTime, const 
 		pos_y -= vy*DeltaTime;
 
 		//gravity = 0;
-		vx = BEDGEHOG_SPEED;
+		//vx = BEDGEHOG_SPEED;
 		vy = 0;
 
-		state = ON_BEDGEHOG_UP;
+		//state = ON_BEDGEHOG_UP;
 
-		last_normaly = normaly;
+		//last_normaly = normaly;
 	}
 	else if (normaly < -0.1f)	// tông ở dưới lên
 	{
-		//this->pos_y = (target->pos_y + target->collider->GetTop() - this->collider->GetBottom()) - 0.1f;
+		this->pos_y = (target->GetPosY() + target->GetCollider()->GetTop() - this->collider->GetBottom()) - 0.1f;
 		pos_y -= vy*DeltaTime;
-		gravity = -FALLDOWN_VELOCITY_DECREASE + 0.02f;
-		vx = -BEDGEHOG_SPEED;
+		/*gravity = -FALLDOWN_VELOCITY_DECREASE + 0.02f;
+		vx = -BEDGEHOG_SPEED;*/
 		vy = 0;
 
-		state = ON_BEDGEHOG_BOTTOM;
+		/*state = ON_BEDGEHOG_BOTTOM;
 		
-		last_normaly = normaly;
+		last_normaly = normaly;*/
 	}
 	return;
 }//----------------------------------
