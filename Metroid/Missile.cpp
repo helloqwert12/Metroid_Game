@@ -6,9 +6,18 @@ void Missile::Render()
 	if (isActive)
 	{
 		_SpriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-		missile_up->Render(pos_x, pos_y);
-		missile_left->Render(pos_x, pos_y);
-		missile_right->Render(pos_x, pos_y);
+		switch (direction)
+		{
+		case ON_UP:
+			missile_up->Render(pos_x, pos_y);
+			break;
+		case ON_LEFT:
+			missile_left->Render(pos_x, pos_y);
+			break;
+		case ON_RIGHT:
+			missile_right->Render(pos_x, pos_y);
+			break;
+		}
 		_SpriteHandler->End();
 	}
 }
@@ -57,11 +66,4 @@ void Missile::InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 	missile_up = new Sprite(_SpriteHandler, MISSILE_SPRITE_PATH, MISSILE_UP_SPRITE, MISSILE_UP_WIDTH, MISSILE_UP_HEIGHT, MISSILE_COUNT, SPRITE_PER_ROW);
 	missile_left = new Sprite(_SpriteHandler, MISSILE_SPRITE_PATH, MISSILE_LEFT_SPRITE, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_COUNT, SPRITE_PER_ROW);
 	missile_right = new Sprite(_SpriteHandler, MISSILE_SPRITE_PATH, MISSILE_RIGHT_SPRITE, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_COUNT, SPRITE_PER_ROW);
-}
-
-void Missile::Shoot(BULLET_DIRECTION dir)
-{
-	direction = dir;
-	pos_x = pos_x_holder;
-	pos_y = pos_y_holder;
 }

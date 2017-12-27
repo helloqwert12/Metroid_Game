@@ -32,6 +32,7 @@ public:
 	Block * block;
 
 	BulletManager * bullets;
+	BulletManager * missiles;
 
 	GroupObject * collisionGroup;	//Group chứa các gameobject có khả năng va chạm với nhau
 	GroupObject * enemyGroup;

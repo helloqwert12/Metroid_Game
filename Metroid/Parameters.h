@@ -176,6 +176,14 @@ enum BRICK_TYPE
 };
 //================ END BRICK ==================
 
+//================ BULLET TYPE ================
+enum BULLET_TYPE
+{
+	STANDARD,
+	MISSILE
+};
+//================ END BULLET TYPE ============
+
 
 //================ SAMUS BULLET ===============
 enum BULLET_DIRECTION

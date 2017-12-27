@@ -16,6 +16,7 @@ void Metroid::_InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 	intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 640, 156, 1);
 	//tiles->InitSprites(d3ddv);
 	world->bullets->InitSprites(d3ddv);
+	world->missiles->InitSprites(d3ddv);
 }
 
 void Metroid::_InitPositions()
@@ -42,6 +43,11 @@ void Metroid::_Shoot(BULLET_DIRECTION dir)
 		//Reset start_shoot
 		start_shoot = 0;
 	}
+}
+
+void Metroid::_ShootMissile(BULLET_DIRECTION dir)
+{
+	world->missiles->Next(dir);
 }
 
 Metroid::Metroid(HINSTANCE hInstance, LPWSTR Name, int Mode, int IsFullScreen, int FrameRate):Game(hInstance, Name, Mode, IsFullScreen, FrameRate)
@@ -428,6 +434,8 @@ void Metroid::ProcessInput(LPDIRECT3DDEVICE9 d3ddv, int Delta)
 			}
 		}
 
+		
+
 	if (world->samus->GetVelocityY() < 0)
 	{
 		world->samus->setNormaly(-1.0f);
@@ -529,6 +537,85 @@ void Metroid::OnKeyDown(int KeyCode)
 					&& world->samus->GetState() != ON_SOMERSAULT_LEFT)
 					world->samus->SetState(RIGHTING);*/
 				break;
+
+			case DIK_C:
+				if (world->samus->GetState() == IDLING_AIM_UP_LEFT)
+				{
+					world->samus->SetState(IDLING_SHOOTING_UP_LEFT);
+
+					_ShootMissile(ON_UP);
+				}
+				if (world->samus->GetState() == IDLING_AIM_UP_RIGHT)
+				{
+					world->samus->SetState(IDLING_SHOOTING_UP_RIGHT);
+
+					_ShootMissile(ON_UP);
+				}
+				//State Chạy bắn lên
+				if (world->samus->GetState() == AIMING_UP_LEFT)
+				{
+					world->samus->SetState(AIMING_UP_LEFT);
+					_ShootMissile(ON_UP);
+				}
+				if (world->samus->GetState() == AIMING_UP_RIGHT)
+				{
+					world->samus->SetState(AIMING_UP_RIGHT);
+					_ShootMissile(ON_UP);
+				}
+				//State Nhảy bắn lên => bug
+				if (world->samus->GetState() == ON_JUMP_AIM_UP_LEFT)
+				{
+					world->samus->SetState(ON_JUMP_SHOOTING_UP_LEFT);
+
+					_ShootMissile(ON_UP);
+				}
+				if (world->samus->GetState() == ON_JUMP_AIM_UP_RIGHT)
+				{
+					world->samus->SetState(ON_JUMP_SHOOTING_UP_RIGHT);
+
+					_ShootMissile(ON_UP);
+				}
+				//State nhảy bắn
+				if (world->samus->GetState() == ON_JUMP_LEFT || world->samus->GetState() == ON_SOMERSAULT_LEFT || world->samus->GetState() == ON_JUMPING_SHOOTING_LEFT)
+				{
+					world->samus->SetState(ON_JUMPING_SHOOTING_LEFT);
+
+					_ShootMissile(ON_LEFT);
+				}
+				if (world->samus->GetState() == ON_JUMP_RIGHT || world->samus->GetState() == ON_SOMERSAULT_RIGHT || world->samus->GetState() == ON_JUMPING_SHOOTING_RIGHT)
+				{
+					world->samus->SetState(ON_JUMPING_SHOOTING_RIGHT);
+
+					_ShootMissile(ON_RIGHT);
+				}
+				//State chạy bắn
+				if (world->samus->GetState() == LEFTING)
+				{
+					world->samus->SetState(ON_RUN_SHOOTING_LEFT);
+
+					_ShootMissile(ON_LEFT);
+				}
+				if (world->samus->GetState() == RIGHTING)
+				{
+					world->samus->SetState(ON_RUN_SHOOTING_RIGHT);
+
+					_ShootMissile(ON_RIGHT);
+				}
+				//State đứng bắn
+				if (world->samus->GetState() == IDLE_LEFT)
+				{
+					world->samus->SetState(IDLING_SHOOTING_LEFT);
+
+					_ShootMissile(ON_LEFT);
+				}
+				if (world->samus->GetState() == IDLE_RIGHT)
+				{
+					world->samus->SetState(IDLING_SHOOTING_RIGHT);
+
+					_ShootMissile(ON_RIGHT);
+				}
+				break;
+
 			}
 		}
 	}

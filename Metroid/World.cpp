@@ -21,8 +21,10 @@ World::World(LPD3DXSPRITE spriteHandler, Metroid * metroid)
 	quadtreeGroup = new GroupObject(this);
 	rootQNode = NULL;
 
-	bullets = new BulletManager(this);
+	bullets = new BulletManager(this, STANDARD);
 	bullets->InitPosition(samus->GetPosX(), samus->GetPosY());
+	missiles = new BulletManager(this, MISSILE);
+	missiles->InitPosition(samus->GetPosX(), samus->GetPosY());
 
 	collisionGroup = new GroupObject(this);
 
@@ -52,6 +54,7 @@ void World::Update(float t)
 	//zoomer->Update(t);
 
 	bullets->Update(t, samus->GetPosX(), samus->GetPosY() + 11);
+	missiles->Update(t, samus->GetPosX(), samus->GetPosY() + 11);
 
 	quadtreeGroup->GetCollisionObjectQTree();
 	// Cập nhật các đối tượng có khả năng va chạm trong frame này
@@ -70,6 +73,7 @@ void World::Render()
 	samus->Render();
 	//zoomer->Render();
 	bullets->Render();
+	missiles->Render();
 	quadtreeGroup->Render();
 	hog_yellow->Render();
 	hog_pink->Render();
