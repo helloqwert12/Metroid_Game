@@ -221,7 +221,8 @@ enum OBJECT_TYPE
 	SAMUS = 1,
 	ENEMY = 2,
 	BRICK = 3,
-	PROJECTILE = 4
+	PROJECTILE = 4,
+	GATE = 5
 };
 //================= END OBJECT TYPE ============
 
@@ -235,6 +236,18 @@ enum ENEMY_TYPE
 	BLOCK
 };
 //================= END ENEMY TYPE =============
+
+//================ GATE ===============
+#define GATE_SPRITES_PATH L"sprites\\gate\\GATE_32.png"
+#define GATE_WIDTH_COUNT 1
+#define GATE_HEIGHT_COUNT 3
+#define GATE_WIDTH 32
+#define GATE_HEIGHT 96
+#define GATE_SPRITE_COUNT 1
+#define GATE_LEFT "sprites\\gate\\GATE_LEFT.txt"
+
+
+//================= END GATE ===========
 
 //================= EFFECT TYPE =============
 #define EXPLOSION_SPRITE_PATH L"sprites\\enemy\\explosion.png"

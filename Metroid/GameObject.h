@@ -28,6 +28,8 @@ protected:
 
 	LPD3DXSPRITE spriteHandler;
 	
+	int Health;
+
 	OBJECT_TYPE type;		//Loại GameObject, được định nghĩa trong file type
 	bool isActive;	// Cho biết GameObject có đang hoạt động hay không
 	Sprite* sprite;
@@ -80,6 +82,9 @@ public:
 
 	void SetHeight(float value);
 	float GetHeight();
+
+	void SetHealth(int value);
+	int GetHealth();
 
 	void setNormalx(float value);
 	float getNormalx();

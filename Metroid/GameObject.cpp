@@ -160,6 +160,16 @@ float GameObject::GetHeight()
 	return height;
 }
 
+void GameObject::SetHealth(int value)
+{
+	Health = value;
+}
+
+int GameObject::GetHealth()
+{
+	return Health;
+}
+
 void GameObject::setNormalx(float value)
 {
 	this->normalx = value;

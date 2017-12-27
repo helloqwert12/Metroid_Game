@@ -42,6 +42,8 @@ World::World(LPD3DXSPRITE spriteHandler, Metroid * metroid)
 	enemyGroup->AddGameObject(bird);
 	enemyGroup->AddGameObject(block);
 	enemyGroup->AddGameObject(sentry);
+
+	gate = new Gate(spriteHandler, this);
 }
 
 
@@ -72,6 +74,7 @@ void World::Update(float t)
 	block->Update(t);
 	bird->Update(t);
 	sentry->Update(t);
+	gate->Update(t);
 }
 
 void World::Render()
@@ -88,6 +91,7 @@ void World::Render()
 	bird->Render();
 	sentry->Render();
 	collisionGroup->Render();
+	gate->Render();
 }
 
 void World::InitSprites(LPDIRECT3DDEVICE9 d3ddv)
