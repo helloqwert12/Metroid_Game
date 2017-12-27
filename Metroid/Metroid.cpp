@@ -28,6 +28,7 @@ void Metroid::_InitPositions()
 	world->bird->InitPostition(1500, 410);
 	world->block->InitPostition(1600,100);
 	world->sentry->InitPostition(1500, 200);
+	world->gate->InitPostition();
 	//bulletManager->InitPosition(world->samus->GetPosX(), world->samus->GetPosY());
 }
 

@@ -9,6 +9,7 @@
 #include "Block.h"
 #include "Bird.h"
 #include "Sentry.h"
+#include "Gate.h"
 /*
 	Class này chứa tất cả những thứ trong Game
 	Các class khác chứa con trỏ đến class này để thao tác với các đối tượng trong class này
@@ -33,6 +34,8 @@ public:
 	Block * block;
 
 	Sentry * sentry;
+
+	Gate * gate;
 
 	BulletManager * bullets;
 	BulletManager * missiles;

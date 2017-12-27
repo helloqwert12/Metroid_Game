@@ -37,12 +37,15 @@ World::World(LPD3DXSPRITE spriteHandler, Metroid * metroid)
 	hog_pink = new Bedgehog(spriteHandler, this, BEDGEHOG_PINK);
 	bird = new Bird(spriteHandler, this, BIRD);
 	block = new Block(spriteHandler, this, BLOCK);
+
 	sentry = new Sentry(spriteHandler, this, SENTRY_LEFT);
 	enemyGroup->AddGameObject(hog_yellow);
 	enemyGroup->AddGameObject(hog_pink);
 	enemyGroup->AddGameObject(bird);
 	enemyGroup->AddGameObject(block);
 	enemyGroup->AddGameObject(sentry);
+
+	gate = new Gate(spriteHandler, this);
 }
 
 
@@ -74,6 +77,7 @@ void World::Update(float t)
 	block->Update(t);
 	bird->Update(t);
 	sentry->Update(t);
+	gate->Update(t);
 }
 
 void World::Render()
@@ -93,7 +97,8 @@ void World::Render()
 	block->Render();
 	bird->Render();
 	sentry->Render();
-	
+	collisionGroup->Render();
+	gate->Render();
 }
 
 void World::InitSprites(LPDIRECT3DDEVICE9 d3ddv)

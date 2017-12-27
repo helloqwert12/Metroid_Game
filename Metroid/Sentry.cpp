@@ -139,54 +139,29 @@ void Sentry::Update(int t)
 	//	}
 	//}
 
-	pos_x += vx * t;
-	pos_y += vy * t;
+	//pos_x += vx * t;
+	//pos_y += vy * t;
 
 	DWORD now = GetTickCount();
-	if (now - last_time > 1000 / ANIMATE_RATE)
+	if (now - last_time > 1000 / 3)
 	{
 		switch (state)
 		{
 		case ON_SENTRY_A1:
-			a1->Next();
+			state = ON_SENTRY_A2;
 			break;
 		case ON_SENTRY_A2:
-			a2->Next();
+			state = ON_SENTRY_A3;
 			break;
 		case ON_SENTRY_A3:
-			a3->Next();
+			state = ON_SENTRY_A4;
 			break;
 		case ON_SENTRY_A4:
-			a4->Next();
+			state = ON_SENTRY_A5;
 			break;
 		case ON_SENTRY_A5:
-			a5->Next();
-			break;
-
-		/*case ON_SENTRY_TOP:
-			top->Next();
-			break;
-		case ON_SENTRY_TOP_RIGHT:
-			top_right->Next();
-			break;
-		case ON_SENTRY_RIGHT:
-			right->Next();
-			break;
-		case ON_SENTRY_BOTTOM_RIGHT:
-			bottom_right->Next();
-			break;
-		case ON_SENTRY_BOTTOM:
-			bottom->Next();
-			break;
-		case ON_SENTRY_BOTTOM_LEFT:
-			bottom_left->Next();
-			break;
-		case ON_SENTRY_LEFT:
-			left->Next();
-			break;
-		case ON_SENTRY_TOP_LEFT:
-			top_left->Next();
-			break;*/
+			state = ON_SENTRY_A1;
+			break;			
 		}
 		last_time = now;
 	}
