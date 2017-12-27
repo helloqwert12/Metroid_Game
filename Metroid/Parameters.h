@@ -179,6 +179,17 @@ enum BRICK_TYPE
 };
 //================ END BRICK ==================
 
+//================ BOSS =======================
+
+//=========== MOTHER BRAIN
+enum MOTHERBRAIN_STATE
+{
+	UNBROKEN,
+	BROKEN
+};
+
+//================ END BOSS ===================
+
 //================ BULLET TYPE ================
 enum BULLET_TYPE
 {
@@ -188,15 +199,20 @@ enum BULLET_TYPE
 //================ END BULLET TYPE ============
 
 
-//================ SAMUS BULLET ===============
+//================ BULLET ===============
 enum BULLET_DIRECTION
 {
 	NONE,
 	ON_LEFT,
 	ON_RIGHT,
-	ON_UP
+	ON_UP,
+	ON_BOTTOM,
+	ON_TOPLEFT,
+	ON_TOPRIGHT,
+	ON_BOTTOMLEFT,
+	ON_BOTTOMRIGHT
 };
-//================= END SAMUS BULLET ===========
+//================= END BULLET ===========
 
 //================= OBJECT TYPE ================
 enum OBJECT_TYPE

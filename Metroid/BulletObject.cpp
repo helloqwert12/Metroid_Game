@@ -140,7 +140,11 @@ void BulletObject::Render()
 
 void BulletObject::Shoot(BULLET_DIRECTION dir)
 {
-	direction = dir;
+	direction = dir;	//cái này xem như set active
 	pos_x = pos_x_holder;
 	pos_y = pos_y_holder;
+}
+
+void BulletObject::Shoot(BULLET_DIRECTION dir, float posX, float posY)
+{
 }
