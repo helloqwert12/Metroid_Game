@@ -3,31 +3,59 @@
 #include "Metroid.h"
 #include "Bullet.h"
 #include "SentryBullet.h"
+#include "BirdBullet.h"
 
 BulletManager::BulletManager(World * manager, BULLET_TYPE bullet_type)
 {
 	this->manager = manager;
 	//Create instance bullet_list
-	bullet_list = new BulletObject*[BULLET_COUNT];
+	int num = 0;
 	switch (bullet_type)
 	{
 	case STANDARD:
+		num = STANDARD_NUM;
+		break;
+	case MISSILE:
+		num = MISSILE_NUM;
+		break;
+	case SENTRY:
+		num = SENTRY_BULLET_NUM;
+		break;
+	case BIRD_BULLET:
+		num = BIRD_BULLET_NUM;
+		break;
+	}
+	bullet_list = new BulletObject*[num];
+	switch (bullet_type)
+	{
+	case STANDARD:
+		//bullet_list = new BulletObject*[STANDARD_NUM];
 		for (int i = 0; i < BULLET_COUNT; i++)
 		{
 			bullet_list[i] = new Bullet(manager);
 		}
 		break;
 	case MISSILE:
+		//bullet_list = new BulletObject*[MISSILE_NUM];
 		for (int i = 0; i < BULLET_COUNT; i++)
 		{
 			bullet_list[i] = new Missile(manager);
 		}
 		break;
 	case SENTRY:
+		//bullet_list = new BulletObject*[SENTRY_BULLET_NUM];
 		for (int i = 0; i < BULLET_COUNT; i++)
 		{
 			bullet_list[i] = new SentryBullet(manager);
 		}
+		break;
+	case BIRD_BULLET:
+		//bullet_list = new BulletObject*[BIRD_BULLET_NUM];
+		for (int i = 0; i < BULLET_COUNT; i++)
+		{
+			bullet_list[i] = new BirdBullet(manager);
+		}
+		break;
 	// ...
 	}
 	

@@ -153,6 +153,9 @@
     <ClCompile Include="dxutil.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Missile.cpp">
       <Filter>Source Files\Projectile</Filter>
     </ClCompile>
@@ -180,8 +183,8 @@
     <ClCompile Include="Sentry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SoundManager.cpp">
-      <Filter>Source Files\Manager</Filter>
+    <ClCompile Include="BirdBullet.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +294,9 @@
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Sentry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BirdBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

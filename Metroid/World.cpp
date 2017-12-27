@@ -3,6 +3,7 @@
 #include "Brick.h"
 #include "Camera.h"
 #include "BulletManager.h"
+#include "Sentry.h"
 
 World::World()
 {
@@ -26,6 +27,7 @@ World::World(LPD3DXSPRITE spriteHandler, Metroid * metroid)
 	missiles = new BulletManager(this, MISSILE);
 	missiles->InitPosition(samus->GetPosX(), samus->GetPosY());
 	sentrybullets = new BulletManager(this, SENTRY);
+	birdbullets = new BulletManager(this, BIRD_BULLET);
 
 	collisionGroup = new GroupObject(this);
 
@@ -59,6 +61,7 @@ void World::Update(float t)
 	bullets->Update(t);
 	missiles->Update(t);
 	sentrybullets->Update(t);
+	birdbullets->Update(t);
 
 	quadtreeGroup->GetCollisionObjectQTree();
 	// Cập nhật các đối tượng có khả năng va chạm trong frame này
@@ -80,13 +83,17 @@ void World::Render()
 	bullets->Render();
 	missiles->Render();
 	sentrybullets->Render();
+	birdbullets->Render();
+
 	quadtreeGroup->Render();
+	collisionGroup->Render();
+
 	hog_yellow->Render();
 	hog_pink->Render();
 	block->Render();
 	bird->Render();
 	sentry->Render();
-	collisionGroup->Render();
+	
 }
 
 void World::InitSprites(LPDIRECT3DDEVICE9 d3ddv)
@@ -95,4 +102,6 @@ void World::InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 	bullets->InitSprites(d3ddv);
 	missiles->InitSprites(d3ddv);
 	sentrybullets->InitSprites(d3ddv);
+	birdbullets->InitSprites(d3ddv);
+	//sentry->InitSprites();
 }

@@ -195,7 +195,8 @@ enum BULLET_TYPE
 {
 	STANDARD,
 	MISSILE,
-	SENTRY
+	SENTRY,
+	BIRD_BULLET
 };
 //================ END BULLET TYPE ============
 
@@ -299,11 +300,33 @@ enum SENTRY_TYPE
 
 //================= END SENTRY BULLET =============
 
+//================= BULLET MANAGER ================
+#define STANDARD_NUM 5
+#define MISSILE_NUM 3
+#define SENTRY_BULLET_NUM 10
+#define BIRD_BULLET_NUM 2
+//================= END BULLET MANAGER ============
 
 
-//================= END BULLET =============
+//================= BULLET GENERAL =================
+#define BULLET_SPRITE_PATH L"sprites\\bullet\\bullet.png"
+#define BULLET_SPRITE "sprites\\bullet\\BULLET.txt"
+#define BULLET_WIDTH 12
+#define BULLET_HEIGHT 14
+#define BULLET_COUNT 1
+#define SPRITE_PER_ROW 1
 
-//================= END SENTRY =============
+#define SPEED 0.6f
+#define LIMIT_DISTANCE 150
+//================= END BULLET GENERAL =============
+
+//================= BIRD BULLET ====================
+#define BIRD_BULLET_SPRITE_PATH L"sprites\\bullet\\bullet.png"
+#define BIRD_BULLET_SPRITE "sprites\\bullet\\BULLET.txt"
+#define BIRD_BULLET_WIDTH 12
+#define BIRD_BULLET_HEIGHT 14
+//================= END BIRD BULLET ================
+
 
 //================= END MOTHER_BRAIN =============
 
