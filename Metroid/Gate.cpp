@@ -49,7 +49,7 @@ Gate::Gate(LPD3DXSPRITE spriteHandler, World * manager)
 	//Collider
 	this->collider = new Collider();
 	this->collider->SetCollider(0, 0, -this->height, this->width);
-	this->SetHealth(-10); //Khởi tạo Health cua Gate = 10 (Gate Open) , nếu Health của Gate <= 0 (Gate Close)
+	this->SetHealth(10); //Khởi tạo Health cua Gate = 10 (Gate Open) , nếu Health của Gate <= 0 (Gate Close)
 
 }
 
