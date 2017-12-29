@@ -16,7 +16,13 @@ enum BEDGEHOG_STATE
 	ON_BEDGEHOG_PINK_LEFT,
 	ON_BEDGEHOG_PINK_RIGHT
 };
-
+enum eDirection
+{
+	TOP,
+	BOTTOM,
+	LEFT,
+	RIGHT
+};
 class Bedgehog: public Enemy
 {
 protected:
@@ -30,9 +36,10 @@ protected:
 	Sprite * left_pink;
 	Sprite * right_pink;
 
-	bool isCollision;
-	float last_normalx;
-	float last_normaly;
+	eDirection preDirection;
+
+	GameObject * Temp;
+	bool isMoving = false;
 
 public:
 	Bedgehog();
@@ -41,6 +48,7 @@ public:
 
 	void InitSprites();
 	void ResponseGround(GameObject *target, const float &DeltaTime, const float &CollisionTimeScale);
+	void ChangeDirection(GameObject *target);
 	//============== OVERRIDE VIRTUAL METHOD ===================
 	virtual void Update(int t);
 	virtual void Render();

@@ -121,7 +121,7 @@ class Block;
 //================== ENEMY =====================
 //================== BEDGEHOG =====================
 #define ENEMY_SPRITE_PATH L"sprites\\enemy\\metroid_enemies_sheet.png"
-#define BEDGEHOG_WIDTH 36
+#define BEDGEHOG_WIDTH 40
 #define BEDGEHOG_HEIGHT 32
 #define BEDGEHOG_SPRITE_COUNT 2
 #define BEDGEHOG_SPEED 0.05f;

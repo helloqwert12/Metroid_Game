@@ -23,7 +23,7 @@ void Metroid::_InitPositions()
 {
 	world->samus->InitPostition();
 	world->hog_yellow->InitPostition(1350, 420);
-	world->hog_pink->InitPostition(1800, 110);
+	world->hog_pink->InitPostition(1800, 130);
 	world->bird->InitPostition(1500, 410);
 	world->block->InitPostition(1600,100);
 	//bulletManager->InitPosition(world->samus->GetPosX(), world->samus->GetPosY());

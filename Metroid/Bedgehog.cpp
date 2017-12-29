@@ -20,8 +20,7 @@ Bedgehog::Bedgehog(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy
 
 	//Set vận tốc
 	gravity = FALLDOWN_VELOCITY_DECREASE;
-	vx = -BEDGEHOG_SPEED;
-	vy = 0;
+	vx = BEDGEHOG_SPEED;
 }
 
 
@@ -69,7 +68,6 @@ void Bedgehog::InitSprites()
 
 void Bedgehog::Update(int t)
 {
-	isCollision = false;
 
 	if (!isActive) return;
 
@@ -93,42 +91,15 @@ void Bedgehog::Update(int t)
 			float timeScale = SweptAABB(manager->quadtreeGroup->objects[i], t);
 			if (timeScale < 1.0f)
 			{
-				isCollision = true;
 				ResponseGround(manager->quadtreeGroup->objects[i], t, timeScale);
+			}
+			else
+			{
+				//ChangeDirection(manager->quadtreeGroup->objects[i]);
 			}
 			break;
 		}
 	}
-
-	// Nếu frame này không va chạm
-	/*if (!isCollision && gravity = 0)
-	{
-		if (last_normalx > 0.1f)
-		{
-			state = ON_BEDGEHOG_BOTTOM;
-			vx = -BEDGEHOG_SPEED;
-			vy = 0;
-		}
-		else if (last_normalx < -0.1f)
-		{
-			state = ON_BEDGEHOG_UP;
-			vx = BEDGEHOG_SPEED;
-			vy = 0;
-		}
-
-		if (last_normaly > 0.1f)
-		{
-			state = ON_BEDGEHOG_RIGHT;
-			vx = 0;
-			vy = -0.05f;
-		}
-		else if (last_normaly < -0.1f)
-		{
-			vx = 0;
-			vy = 0.05f;
-			state = ON_BEDGEHOG_LEFT;
-		}
-	}*/
 
 	pos_x += vx*t;
 	pos_y += vy*t;
@@ -221,55 +192,78 @@ void Bedgehog::ResponseGround(GameObject *target, const float &DeltaTime, const 
 		this->pos_x = (target->GetPosX() + target->GetCollider()->GetRight() - this->collider->GetLeft()) + 0.1f;
 		pos_x -= vx*DeltaTime;
 
-		//gravity = 0;
-		//vx = 0;
-		//vy = -0.05f;
-
-		//state = ON_BEDGEHOG_RIGHT;
-
-		//last_normalx = normalx;
+		vy = BEDGEHOG_SPEED;
+		state = ON_BEDGEHOG_RIGHT;
+		this->preDirection = RIGHT;
 	}
-
 	else if (normalx < -0.1f)// tông bên trái gạch
 	{
 		this->pos_x = (target->GetPosX() + target->GetCollider()->GetLeft() - this->collider->GetRight()) - 0.1f;
 		pos_x -= vx*DeltaTime;
-		//pos_y += 0.1f;
-		//
-		////Test 
-		//gravity = 0;
-		//vx = 0;
-		//vy = 0.05f;
 
-		//state = ON_BEDGEHOG_LEFT;
-
-		//last_normalx = normalx;
+		//vx *= (-1);
+		vy = BEDGEHOG_SPEED;
+		state = ON_BEDGEHOG_LEFT;
+		this->preDirection = LEFT;
+		gravity = 0.0f;
 	}
-
-	if (normaly > 0.1f) // trên xuống (không vào normaly được)
+	else if (normaly > 0.1f) // trên xuống (không vào normaly được)
 	{
 		this->pos_y = (target->GetPosY() + target->GetCollider()->GetTop() - this->collider->GetBottom()) + 0.1f;
 		pos_y -= vy*DeltaTime;
 
-		//gravity = 0;
-		//vx = BEDGEHOG_SPEED;
-		vy = 0;
-
-		//state = ON_BEDGEHOG_UP;
-
-		//last_normaly = normaly;
+		
+		vy = -0.01f;
+		state = ON_BEDGEHOG_UP;
+		this->preDirection = TOP;
 	}
 	else if (normaly < -0.1f)	// tông ở dưới lên
 	{
 		this->pos_y = (target->GetPosY() + target->GetCollider()->GetTop() - this->collider->GetBottom()) - 0.1f;
 		pos_y -= vy*DeltaTime;
-		/*gravity = -FALLDOWN_VELOCITY_DECREASE + 0.02f;
-		vx = -BEDGEHOG_SPEED;*/
-		vy = 0;
-
-		/*state = ON_BEDGEHOG_BOTTOM;
 		
-		last_normaly = normaly;*/
+		vx *= (-1);
+		vy = 0.0f;
+		state = ON_BEDGEHOG_BOTTOM;
+		this->preDirection = BOTTOM;
 	}
-	return;
-}//----------------------------------
+	if (vx != 0 || vy != 0)
+	{
+		this->isMoving = true;
+	}
+	Temp = target;
+}
+
+void Bedgehog::ChangeDirection(GameObject * target)
+{
+	if (this->Temp == target && isMoving == true)
+	{
+		if (this->preDirection == TOP )
+		{
+			this->vx = -0.05f;
+			//vx = 0.0f;
+			this->vy = -BEDGEHOG_SPEED;
+			gravity = 0.0f;
+		}
+		else if (this->preDirection == RIGHT)
+		{
+			this->vx = BEDGEHOG_SPEED;
+			this->vy = 0.01f;
+			gravity = 0.0f;
+
+		}
+		else if (this->preDirection == BOTTOM )
+		{
+			this->vx = 0.01f;
+			this->vy = BEDGEHOG_SPEED;
+		}
+		else if (this->preDirection == LEFT)
+		{
+			this->vx = BEDGEHOG_SPEED;
+			this->vy = -0.01f;
+		}
+		this->isMoving = false;
+	}
+}
+
+//----------------------------------
