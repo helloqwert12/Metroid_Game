@@ -4,6 +4,8 @@
 #include "utils.h"
 #include "Collision.h"
 #include "BulletManager.h"
+#include "World.h"
+#include "Samus.h"
 DWORD last_time;
 void Metroid::_InitBackground()
 {
@@ -11,12 +13,11 @@ void Metroid::_InitBackground()
 
 void Metroid::_InitSprites(LPDIRECT3DDEVICE9 d3ddv)
 {
-	world->samus->InitSprites(d3ddv);
+	world->InitSprites(d3ddv);
 	//tiles->InitSprites(d3ddv);
-	intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 640, 156, 1);
+	//intro = new Sprite(spriteHandler, INTRO_FILE, INTRO, 640, 640, 156, 1);
 	//tiles->InitSprites(d3ddv);
-	world->bullets->InitSprites(d3ddv);
-	world->missiles->InitSprites(d3ddv);
+	
 }
 
 void Metroid::_InitPositions()
@@ -26,6 +27,8 @@ void Metroid::_InitPositions()
 	world->hog_pink->InitPostition(1800, 130);
 	world->bird->InitPostition(1500, 410);
 	world->block->InitPostition(1600,100);
+	world->sentry->InitPostition(1500, 200);
+	world->gate->InitPostition();
 	//bulletManager->InitPosition(world->samus->GetPosX(), world->samus->GetPosY());
 }
 
@@ -36,7 +39,7 @@ void Metroid::_Shoot(BULLET_DIRECTION dir)
 	if (start_shoot <= 0) //if shooting is active
 	{
 		start_shoot = GetTickCount();
-		world->bullets->Next(dir);
+		world->bullets->Next(dir, world->samus->GetPosX(), world->samus->GetPosY());
 	}
 	else if ((now_shoot - start_shoot) > SHOOTING_SPEED * tick_per_frame)
 	{
@@ -47,7 +50,7 @@ void Metroid::_Shoot(BULLET_DIRECTION dir)
 
 void Metroid::_ShootMissile(BULLET_DIRECTION dir)
 {
-	world->missiles->Next(dir);
+	world->missiles->Next(dir, world->samus->GetPosX(), world->samus->GetPosY());
 }
 
 Metroid::Metroid(HINSTANCE hInstance, LPWSTR Name, int Mode, int IsFullScreen, int FrameRate):Game(hInstance, Name, Mode, IsFullScreen, FrameRate)
@@ -67,6 +70,8 @@ Metroid::~Metroid()
 	//delete(bulletManager);
 
 	delete(first_room);
+
+	delete(intro);
 }
 
 void Metroid::LoadResources(LPDIRECT3DDEVICE9 d3ddv)
@@ -109,12 +114,12 @@ void Metroid::Update(float Delta)
 
 void Metroid::UpdateIntro(float Delta)
 {
-	DWORD now = GetTickCount();
-	if (now - Delta  > 1000 / 100)
-	{
-		intro->Next();
-		Delta = now;
-	}
+	//DWORD now = GetTickCount();
+	//if (now - Delta  > 1000 / 100)
+	//{
+	//	intro->Next();
+	//	Delta = now;
+	//}
 }
 
 void Metroid::UpdateFrame(float Delta)
@@ -158,11 +163,19 @@ void Metroid::RenderStartScreen(LPDIRECT3DDEVICE9 d3ddv)
 
 void Metroid::RenderIntro(LPDIRECT3DDEVICE9 d3ddv)
 {
-	Camera::currentCamX = -310;
-	Camera::currentCamY = 250;
-	spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-	intro->Render(0, 0);
-	spriteHandler->End();
+	//Camera::currentCamX = -310;
+	//Camera::currentCamY = 250;
+	//spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+	//intro->Render(0, 0);
+	//spriteHandler->End();
+	// Background
+	d3ddv->StretchRect(
+		introscreen,		// from 
+		NULL,				// which portion?
+		_BackBuffer,		// to 
+		NULL,				// which portion?
+		D3DTEXF_NONE);
+	introscreen = CreateSurfaceFromFile(_d3ddv, INTROSCREEN_FILE);
 }
 
 void Metroid::RenderFrame(LPDIRECT3DDEVICE9 d3ddv)
@@ -539,6 +552,7 @@ void Metroid::OnKeyDown(int KeyCode)
 				break;
 
 			case DIK_C:
+				Game::gameSound->playSound(SHOOT_MISSILE);
 				if (world->samus->GetState() == IDLING_AIM_UP_LEFT)
 				{
 					world->samus->SetState(IDLING_SHOOTING_UP_LEFT);

@@ -14,15 +14,15 @@ Bird::Bird(LPD3DXSPRITE spriteHandler, World * manager, ENEMY_TYPE enemy_type) :
 	//Khởi tạo sprites
 	this->InitSprites();
 
-	width = BLOCK_WIDTH;
-	height = BLOCK_HEIGHT;
+	width = BIRD_WIDTH;
+	height = BIRD_HEIGHT;
 
 	//Set animate rate ban đầu
 	animate_rate = BIRD_STANDARD_ANIMATE_RATE;
 
 	//--TO DO: Khởi tạo collider cho Block (Khang)
 	collider = new Collider();
-	collider->SetCollider(0, 0, -BLOCK_HEIGHT - 10, BLOCK_WIDTH);
+	collider->SetCollider(0, 0, -BIRD_HEIGHT, BIRD_WIDTH);
 
 	// collider dùng khi samus đi vào vùng va chạm
 	collider_area = new Collider();

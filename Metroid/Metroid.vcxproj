@@ -28,7 +28,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClCompile Include="Bedgehog.cpp" />
     <ClCompile Include="Bird.cpp" />
+    <ClCompile Include="BirdBullet.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -148,16 +149,20 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="Gate.cpp" />
     <ClCompile Include="GroupObject.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Metroid.cpp" />
     <ClCompile Include="Missile.cpp" />
+    <ClCompile Include="MotherBrain.cpp" />
     <ClCompile Include="PositionManager.cpp" />
     <ClCompile Include="QNode.cpp" />
     <ClCompile Include="QTreeObject.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Samus.cpp" />
+    <ClCompile Include="Sentry.cpp" />
+    <ClCompile Include="SentryBullet.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Tiles.cpp" />
@@ -168,6 +173,7 @@
   <ItemGroup>
     <ClInclude Include="Bedgehog.h" />
     <ClInclude Include="Bird.h" />
+    <ClInclude Include="BirdBullet.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Bullet.h" />
@@ -182,16 +188,20 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="Gate.h" />
     <ClInclude Include="GroupObject.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Metroid.h" />
     <ClInclude Include="Missile.h" />
+    <ClInclude Include="MotherBrain.h" />
     <ClInclude Include="Parameters.h" />
     <ClInclude Include="PositionManager.h" />
     <ClInclude Include="QNode.h" />
     <ClInclude Include="QTreeObject.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Samus.h" />
+    <ClInclude Include="Sentry.h" />
+    <ClInclude Include="SentryBullet.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Tiles.h" />

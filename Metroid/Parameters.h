@@ -179,24 +179,42 @@ enum BRICK_TYPE
 };
 //================ END BRICK ==================
 
+//================ BOSS =======================
+
+//=========== MOTHER BRAIN
+enum MOTHERBRAIN_STATE
+{
+	UNBROKEN,
+	BROKEN
+};
+
+//================ END BOSS ===================
+
 //================ BULLET TYPE ================
 enum BULLET_TYPE
 {
 	STANDARD,
-	MISSILE
+	MISSILE,
+	SENTRY,
+	BIRD_BULLET
 };
 //================ END BULLET TYPE ============
 
 
-//================ SAMUS BULLET ===============
+//================ BULLET ===============
 enum BULLET_DIRECTION
 {
 	NONE,
 	ON_LEFT,
 	ON_RIGHT,
-	ON_UP
+	ON_UP,
+	ON_BOTTOM,
+	ON_TOPLEFT,
+	ON_TOPRIGHT,
+	ON_BOTTOMLEFT,
+	ON_BOTTOMRIGHT
 };
-//================= END SAMUS BULLET ===========
+//================= END BULLET ===========
 
 //================= OBJECT TYPE ================
 enum OBJECT_TYPE
@@ -204,7 +222,8 @@ enum OBJECT_TYPE
 	SAMUS = 1,
 	ENEMY = 2,
 	BRICK = 3,
-	PROJECTILE = 4
+	PROJECTILE = 4,
+	GATE = 5
 };
 //================= END OBJECT TYPE ============
 
@@ -219,9 +238,115 @@ enum ENEMY_TYPE
 };
 //================= END ENEMY TYPE =============
 
+//================ GATE ===============
+#define GATE_SPRITES_PATH L"sprites\\gate\\GATE_32.png"
+#define GATE_WIDTH_COUNT 1
+#define GATE_HEIGHT_COUNT 3
+#define GATE_WIDTH 32
+#define GATE_HEIGHT 96
+#define GATE_SPRITE_COUNT 1
+#define GATE_LEFT "sprites\\gate\\GATE_LEFT.txt"
+
+
+//================= END GATE ===========
+
+//================= EFFECT TYPE =============
 #define EXPLOSION_SPRITE_PATH L"sprites\\enemy\\explosion.png"
 
 #define EXPLOSION_WIDTH 64
 #define EXPLOSION_HEIGHT 64
 
 #define EXPLOSION_SPRITE_COUNT 3
+//================= END ENEMY TYPE =============
+
+//================= BOSSES =================
+#define BOSS_SPRITE_PATH L"sprites\\bosses\\boss_sprtesheet.png"
+
+//================= MOTHER_BRAIN =================
+#define MOTHER_BRAIN_WIDTH 160
+#define MOTHER_BRAIN_HEIGHT 128
+#define MOTHER_BRAIN_SPRITE_COUNT 8
+
+#define MOTHER_BRAIN_HIT_WIDTH 96
+#define MOTHER_BRAIN_HIT_HEIGHT 128
+#define MOTHER_BRAIN_HIT_SPRITE_COUNT 2
+
+//================= SENTRY =================
+//================= SENTRY TYPE =================
+enum SENTRY_TYPE
+{
+	SENTRY_LEFT,
+	SENTRY_TOP,
+	SENTRY_RIGHT
+};
+//================= END SENTRY TYPE =============
+
+#define SENTRY_WIDTH 42
+#define SENTRY_HEIGHT 42
+#define SENTRY_SPRITE_COUNT 1
+
+#define SENTRY_TOP_PATH "sprites\\bosses\\SENTRY_TOP.txt"
+#define SENTRY_TOP_RIGHT_PATH "sprites\\bosses\\SENTRY_TOP_RIGHT.txt"
+#define SENTRY_RIGHT_PATH "sprites\\bosses\\SENTRY_RIGHT.txt"
+#define SENTRY_BOTTOM_RIGHT_PATH "sprites\\bosses\\SENTRY_BOTTOM_RIGHT.txt"
+#define SENTRY_BOTTOM_PATH "sprites\\bosses\\SENTRY_BOTTOM.txt"
+#define SENTRY_BOTTOM_LEFT_PATH "sprites\\bosses\\SENTRY_BOTTOM_LEFT.txt"
+#define SENTRY_LEFT_PATH "sprites\\bosses\\SENTRY_LEFT.txt"
+#define SENTRY_TOP_LEFT_PATH "sprites\\bosses\\SENTRY_TOP_LEFT.txt"
+
+//================= SENTRY BULLET =================
+#define SENTRY_BULLET_WIDTH 16
+#define SENTRY_BULLET_HEIGHT 16
+#define SENTRY_SPRITE_COUNT 1
+
+#define SENTRY_BULLET_SPRITE_COUNT 1
+#define SENTRY_BULLET_SPIRTE_PATH L"sprites\\bosses\\boss_sprtesheet.png"
+
+#define SENTRY_BULLET_UP "sprites\\bosses\\SENTRY_BULLET_TOP.txt"
+#define SENTRY_BULLET_TOPRIGHT "sprites\\bosses\\SENTRY_BULLET_TOP_RIGHT.txt"
+#define SENTRY_BULLET_RIGHT "sprites\\bosses\\SENTRY_BULLET_RIGHT.txt"
+#define SENTRY_BULLET_BOTTOMRIGHT "sprites\\bosses\\SENTRY_BULLET_BOTTOM_RIGHT.txt"
+#define SENTRY_BULLET_BOTTOM "sprites\\bosses\\SENTRY_BULLET_BOTTOM.txt"
+#define SENTRY_BULLET_BOTTOMLEFT "sprites\\bosses\\SENTRY_BULLET_BOTTOM_LEFT.txt"
+#define SENTRY_BULLET_LEFT "sprites\\bosses\\SENTRY_BULLET_LEFT.txt"
+#define SENTRY_BULLET_TOPLEFT "sprites\\bosses\\SENTRY_BULLET_TOP_LEFT.txt"
+
+//================= END SENTRY BULLET =============
+
+//================= BULLET MANAGER ================
+#define STANDARD_NUM 5
+#define MISSILE_NUM 3
+#define SENTRY_BULLET_NUM 10
+#define BIRD_BULLET_NUM 2
+//================= END BULLET MANAGER ============
+
+
+//================= BULLET GENERAL =================
+#define BULLET_SPRITE_PATH L"sprites\\bullet\\bullet.png"
+#define BULLET_SPRITE "sprites\\bullet\\BULLET.txt"
+#define BULLET_WIDTH 12
+#define BULLET_HEIGHT 14
+#define BULLET_COUNT 1
+#define SPRITE_PER_ROW 1
+
+#define SPEED 0.6f
+#define LIMIT_DISTANCE 150
+//================= END BULLET GENERAL =============
+
+//================= BIRD BULLET ====================
+#define BIRD_BULLET_SPRITE_PATH L"sprites\\bullet\\bullet.png"
+#define BIRD_BULLET_SPRITE "sprites\\bullet\\BULLET.txt"
+#define BIRD_BULLET_WIDTH 12
+#define BIRD_BULLET_HEIGHT 14
+//================= END BIRD BULLET ================
+
+
+//================= END MOTHER_BRAIN =============
+
+
+
+//================= END BOSSES =============
+
+
+/////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////

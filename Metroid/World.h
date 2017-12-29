@@ -8,6 +8,8 @@
 #include "Bedgehog.h"
 #include "Block.h"
 #include "Bird.h"
+#include "Sentry.h"
+#include "Gate.h"
 /*
 	Class này chứa tất cả những thứ trong Game
 	Các class khác chứa con trỏ đến class này để thao tác với các đối tượng trong class này
@@ -31,8 +33,14 @@ public:
 	Bird * bird;
 	Block * block;
 
+	Sentry * sentry;
+
+	Gate * gate;
+
 	BulletManager * bullets;
 	BulletManager * missiles;
+	BulletManager * sentrybullets;
+	BulletManager * birdbullets;
 
 	GroupObject * collisionGroup;	//Group chứa các gameobject có khả năng va chạm với nhau
 	GroupObject * enemyGroup;
@@ -44,6 +52,7 @@ public:
 	//void Init();
 	void Update(float t);
 	void Render();
+	void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
 	//void Destroy();
 
 };

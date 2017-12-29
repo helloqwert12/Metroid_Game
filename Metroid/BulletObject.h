@@ -35,9 +35,10 @@ public:
 
 	//============ VIRTUAL METHOD =================
 	virtual void InitSprites(LPDIRECT3DDEVICE9 d3ddv);
-	virtual void Update(int t, int posX, int posY);
+	virtual void Update(float t);
 	virtual void Render();
 	virtual void Shoot(BULLET_DIRECTION dir);
+	virtual void Shoot(BULLET_DIRECTION dir, float posX, float posY);
 	//============ END VIRTUAL METHOD =============
 };
 #endif
